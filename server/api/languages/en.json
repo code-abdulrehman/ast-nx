@@ -1,0 +1,125 @@
+{
+  "header": {
+    "logo": {
+      "text": "Abdulrehman Sapra Telecom",
+      "description": "Your trusted telecom partner"
+    },
+    "search": {
+      "placeholder": "Search products...",
+      "button": "Search"
+    },
+    "navigation": {
+      "store": "Store",
+      "home": "Home"
+    },
+    "meta": {
+      "title": "Abdulrehman Sapra Telecom - Your Trusted Telecom Partner",
+      "description": "Leading telecom solutions provider offering quality products and services",
+      "keywords": "telecom, mobile, internet, communication, technology"
+    }
+  },
+  "footer": {
+    "social": {
+      "title": "Follow Us",
+      "icons": [
+        {
+          "name": "Facebook",
+          "icon": "facebook",
+          "link": "https://facebook.com",
+          "color": "hover:text-blue-600"
+        },
+        {
+          "name": "Instagram",
+          "icon": "instagram",
+          "link": "https://instagram.com",
+          "color": "hover:text-pink-500"
+        },
+        {
+          "name": "LinkedIn",
+          "icon": "linkedin",
+          "link": "https://linkedin.com",
+          "color": "hover:text-blue-700"
+        },
+        {
+          "name": "Twitter",
+          "icon": "twitter",
+          "link": "https://twitter.com",
+          "color": "hover:text-blue-400"
+        },
+        {
+          "name": "TikTok",
+          "icon": "tiktok",
+          "link": "https://tiktok.com",
+          "color": "hover:text-black"
+        },
+        {
+          "name": "WhatsApp",
+          "icon": "whatsapp",
+          "link": "https://wa.me/123456789",
+          "color": "hover:text-green-500"
+        }
+      ]
+    },
+    "copyright": {
+      "text": "All Rights Reserved",
+      "company": "Abdulrehman Sapra Telecom"
+    }
+  },
+  "trusted": {
+    "title": "Brands Whose Customers Trust Us"
+  },
+  "services": {
+    "title": "Our Services",
+    "items": [
+      {
+        "icon": "truck",
+        "title": "Fast Shipping",
+        "description": "Fast & Free Delivery"
+      },
+      {
+        "icon": "discount",
+        "title": "Discounts %",
+        "description": "Save more on deals"
+      },
+      {
+        "icon": "wallet",
+        "title": "COD Available",
+        "description": "Cash or Card Accepted"
+      },
+      {
+        "icon": "headset",
+        "title": "Customer Support",
+        "description": "24/7 customer service"
+      }
+    ]
+  },
+  "products": {
+    "featured": "Featured Products",
+    "gaming": "Gaming Products",
+    "gamingDescription": "High-performance gaming earbuds for the ultimate gaming experience",
+    "allProducts": "All Products",
+    "back": "Back",
+    "onSale": "On Sale Now",
+    "endingIn": "Ending in",
+    "offerExpired": "Offer Expired!",
+    "endow": "Endow In",
+    "latest": "Latest Products",
+    "viewAll": "View All Products",
+    "searchResults": "Search Results for",
+    "results": "Results",
+    "found": "Found",
+    "noProducts": "No products found for",
+    "trySearching": "Try searching with different keywords",
+    "backToProducts": "Back to Products",
+    "reviews": "Reviews",
+    "off": "Off",
+    "productInfo": "Product Information",
+    "specifications": "Specifications",
+    "stock": "Stock",
+    "available": "Available",
+    "category": "Category",
+    "country": "Country",
+    "sku": "SKU",
+    "tags": "Tags"
+  }
+}

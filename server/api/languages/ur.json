@@ -1,0 +1,125 @@
+{
+  "header": {
+    "logo": {
+      "text": "عبدالرحمن سپرا ٹیلی کام",
+      "description": "آپ کا قابل اعتماد ٹیلی کام پارٹنر"
+    },
+    "search": {
+      "placeholder": "مصنوعات تلاش کریں...",
+      "button": "تلاش"
+    },
+    "navigation": {
+      "store": "اسٹور",
+      "home": "ہوم"
+    },
+    "meta": {
+      "title": "عبدالرحمن سپرا ٹیلی کام - آپ کا قابل اعتماد ٹیلی کام پارٹنر",
+      "description": "معیاری مصنوعات اور خدمات پیش کرنے والا معروف ٹیلی کام حل فراہم کنندہ",
+      "keywords": "ٹیلی کام، موبائل، انٹرنیٹ، مواصلات، ٹیکنالوجی"
+    }
+  },
+  "footer": {
+    "social": {
+      "title": "ہمیں فالو کریں",
+      "icons": [
+        {
+          "name": "Facebook",
+          "icon": "facebook",
+          "link": "https://facebook.com",
+          "color": "hover:text-blue-600"
+        },
+        {
+          "name": "Instagram",
+          "icon": "instagram",
+          "link": "https://instagram.com",
+          "color": "hover:text-pink-500"
+        },
+        {
+          "name": "LinkedIn",
+          "icon": "linkedin",
+          "link": "https://linkedin.com",
+          "color": "hover:text-blue-700"
+        },
+        {
+          "name": "Twitter",
+          "icon": "twitter",
+          "link": "https://twitter.com",
+          "color": "hover:text-blue-400"
+        },
+        {
+          "name": "TikTok",
+          "icon": "tiktok",
+          "link": "https://tiktok.com",
+          "color": "hover:text-black"
+        },
+        {
+          "name": "WhatsApp",
+          "icon": "whatsapp",
+          "link": "https://wa.me/123456789",
+          "color": "hover:text-green-500"
+        }
+      ]
+    },
+    "copyright": {
+      "text": "تمام حقوق محفوظ ہیں",
+      "company": "عبدالرحمن سپرا ٹیلی کام"
+    }
+  },
+  "trusted": {
+    "title": "وہ برانڈز جن کے کسٹمرز ہم پر بھروسہ کرتے ہیں"
+  },
+  "services": {
+    "title": "ہماری خدمات",
+    "items": [
+      {
+        "icon": "truck",
+        "title": "تیز شپنگ",
+        "description": "تیز اور مفت ڈیلیوری"
+      },
+      {
+        "icon": "discount",
+        "title": "ڈسکاؤنٹ %",
+        "description": "ڈیلز پر زیادہ بچائیں"
+      },
+      {
+        "icon": "wallet",
+        "title": "COD دستیاب",
+        "description": "نقد یا کارڈ قبول"
+      },
+      {
+        "icon": "headset",
+        "title": "کسٹمر سپورٹ",
+        "description": "24/7 کسٹمر سروس"
+      }
+    ]
+  },
+  "products": {
+    "featured": "نمایاں مصنوعات",
+    "gaming": "گیمنگ مصنوعات",
+    "gamingDescription": "بہترین گیمنگ تجربے کے لیے اعلیٰ کارکردگی والے گیمنگ ایئربڈز",
+    "allProducts": "تمام مصنوعات",
+    "back": "واپس",
+    "onSale": "ابھی فروخت میں",
+    "endingIn": "رہے ہیں",
+    "offerExpired": "فروخت منقضی ہو گئی!",
+    "endow": "انڈو ان",
+    "latest": "تازہ ترین مصنوعات",
+    "viewAll": "تمام مصنوعات دیکھیں",
+    "searchResults": "تلاش کے نتائج",
+    "results": "نتائج",
+    "found": "ملے",
+    "noProducts": "کوئی مصنوعات نہیں ملی",
+    "trySearching": "مختلف الفاظ سے تلاش کرنے کی کوشش کریں",
+    "backToProducts": "مصنوعات پر واپس جائیں",
+    "reviews": "ریویوز",
+    "off": "بند",
+    "productInfo": "مصنوعات کی معلومات",
+    "specifications": "تفصیلات",
+    "stock": "اسٹاک",
+    "available": "دستیاب",
+    "category": "قسم",
+    "country": "ملک",
+    "sku": "SKU",
+    "tags": "ٹیگز"
+  }
+}

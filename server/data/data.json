@@ -1,0 +1,58 @@
+
+{
+  "header": {
+    "logo": {
+      "text": {
+        "en": "Abdulrehman Sapra Telecom",
+        "ur": "عبدالرحمن سپرا ٹیلی کام",
+        "ar": "عبد الرحمن سبرا للاتصالات"
+      },
+      "description": {
+        "en": "Your trusted telecom partner",
+        "ur": "آپ کا قابل اعتماد ٹیلی کام پارٹنر",
+        "ar": "شريك الاتصالات الموثوق به"
+      }
+    },
+    "search": {
+      "placeholder": {
+        "en": "Search products...",
+        "ur": "مصنوعات تلاش کریں...",
+        "ar": "البحث عن المنتجات..."
+      },
+      "button": {
+        "en": "Search",
+        "ur": "تلاش",
+        "ar": "بحث"
+      }
+    },
+    "navigation": {
+      "store": {
+        "en": "Store",
+        "ur": "اسٹور",
+        "ar": "المتجر"
+      },
+      "home": {
+        "en": "Home",
+        "ur": "ہوم",
+        "ar": "الرئيسية"
+      }
+    },
+    "meta": {
+      "title": {
+        "en": "Abdulrehman Sapra Telecom - Your Trusted Telecom Partner",
+        "ur": "عبدالرحمن سپرا ٹیلی کام - آپ کا قابل اعتماد ٹیلی کام پارٹنر",
+        "ar": "عبد الرحمن سبرا للاتصالات - شريك الاتصالات الموثوق به"
+      },
+      "description": {
+        "en": "Leading telecom solutions provider offering quality products and services",
+        "ur": "معیاری مصنوعات اور خدمات پیش کرنے والا معروف ٹیلی کام حل فراہم کنندہ",
+        "ar": "مزود حلول الاتصالات الرائد يقدم منتجات وخدمات عالية الجودة"
+      },
+      "keywords": {
+        "en": "telecom, mobile, internet, communication, technology",
+        "ur": "ٹیلی کام، موبائل، انٹرنیٹ، مواصلات، ٹیکنالوجی",
+        "ar": "الاتصالات، الهاتف المحمول، الإنترنت، الاتصالات، التكنولوجيا"
+      }
+    }
+  }
+}

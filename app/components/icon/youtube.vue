@@ -1,0 +1,3 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><mask id="SVGsyA92bmM"><g fill="none" fill-opacity="0" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path fill="#fff" d="M12 5c9 0 9 0 9 7c0 7 0 7 -9 7c-9 0 -9 0 -9 -7c0 -7 0 -7 9 -7Z" fill-opacity="1"/><path fill="#000" stroke="none" d="M10 8.5L16 12L10 15.5z" fill-opacity="1"/></g></mask><rect width="24" height="24" fill="currentColor" mask="url(#SVGsyA92bmM)"/></svg>
+</template>

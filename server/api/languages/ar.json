@@ -1,0 +1,125 @@
+{
+  "header": {
+    "logo": {
+      "text": "عبد الرحمن سبرا للاتصالات",
+      "description": "شريك الاتصالات الموثوق به"
+    },
+    "search": {
+      "placeholder": "البحث عن المنتجات...",
+      "button": "بحث"
+    },
+    "navigation": {
+      "store": "المتجر",
+      "home": "الرئيسية"
+    },
+    "meta": {
+      "title": "عبد الرحمن سبرا للاتصالات - شريك الاتصالات الموثوق به",
+      "description": "مزود حلول الاتصالات الرائد يقدم منتجات وخدمات عالية الجودة",
+      "keywords": "الاتصالات، الهاتف المحمول، الإنترنت، الاتصالات، التكنولوجيا"
+    }
+  },
+  "footer": {
+    "social": {
+      "title": "تابعنا",
+      "icons": [
+        {
+          "name": "Facebook",
+          "icon": "facebook",
+          "link": "https://facebook.com",
+          "color": "hover:text-blue-600"
+        },
+        {
+          "name": "Instagram",
+          "icon": "instagram",
+          "link": "https://instagram.com",
+          "color": "hover:text-pink-500"
+        },
+        {
+          "name": "LinkedIn",
+          "icon": "linkedin",
+          "link": "https://linkedin.com",
+          "color": "hover:text-blue-700"
+        },
+        {
+          "name": "Twitter",
+          "icon": "twitter",
+          "link": "https://twitter.com",
+          "color": "hover:text-blue-400"
+        },
+        {
+          "name": "TikTok",
+          "icon": "tiktok",
+          "link": "https://tiktok.com",
+          "color": "hover:text-black"
+        },
+        {
+          "name": "WhatsApp",
+          "icon": "whatsapp",
+          "link": "https://wa.me/123456789",
+          "color": "hover:text-green-500"
+        }
+      ]
+    },
+    "copyright": {
+      "text": "جميع الحقوق محفوظة",
+      "company": "عبد الرحمن سبرا للاتصالات"
+    }
+  },
+  "trusted": {
+    "title": "العلامات التجارية التي يثق عملاؤها بنا"
+  },
+  "services": {
+    "title": "خدماتنا",
+    "items": [
+      {
+        "icon": "truck",
+        "title": "شحن سريع",
+        "description": "توصيل سريع ومجاني"
+      },
+      {
+        "icon": "discount",
+        "title": "خصومات %",
+        "description": "وفر أكثر في الصفقات"
+      },
+      {
+        "icon": "wallet",
+        "title": "الدفع عند الاستلام متاح",
+        "description": "نقد أو بطاقة مقبولة"
+      },
+      {
+        "icon": "headset",
+        "title": "دعم العملاء",
+        "description": "خدمة عملاء على مدار الساعة"
+      }
+    ]
+  },
+  "products": {
+    "featured": "المنتجات المميزة",
+    "gaming": "منتجات الألعاب",
+    "gamingDescription": "سماعات ألعاب عالية الأداء لتجربة ألعاب مثالية",
+    "allProducts": "جميع المنتجات",
+    "back": "رجوع",
+    "onSale": "للبيع الآن",
+    "endow": "اندو إن",
+    "endingIn": "ينتهي في",
+    "offerExpired": "تم الإنتهاء من العرض!",
+    "latest": "أحدث المنتجات",
+    "viewAll": "عرض جميع المنتجات",
+    "searchResults": "نتائج البحث عن",
+    "results": "النتائج",
+    "found": "تم العثور على",
+    "noProducts": "لم يتم العثور على منتجات لـ",
+    "trySearching": "جرب البحث بكلمات مختلفة",
+    "backToProducts": "العودة إلى المنتجات",
+    "reviews": "التقييمات",
+    "off": "إيقاف",
+    "productInfo": "معلومات المنتج",
+    "specifications": "المواصفات",
+    "stock": "المخزون",
+    "available": "متوفر",
+    "category": "الفئة",
+    "country": "البلد",
+    "sku": "SKU",
+    "tags": "العلامات"
+  }
+}
