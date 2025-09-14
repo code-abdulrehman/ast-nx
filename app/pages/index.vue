@@ -32,7 +32,7 @@ const { products, featured, gamingProducts } = useProducts()
 
 // Set page title and meta
 useHead({
-  title: 'AST Air Buds | Best Wireless Earbuds & Audio Accessories',
+  title: 'AST Earbuds | Best Wireless Earbuds & Audio Accessories',
   meta: [
     { name: 'description', content: 'AST Telecom Company offers the best mobile, broadband, and internet services. Discover affordable plans, latest smartphones, and top customer support. Switch to AST today!, Abdulrehman Sapra Telecom' },
     { name: 'keywords', content: 'AST, Abdulrehman Sapra Telecom, telecom solutions, quality products, services, buds, earbuds, headphones, audio accessories, china, best wireless earbuds, best audio accessories' },

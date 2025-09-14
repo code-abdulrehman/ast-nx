@@ -450,6 +450,6 @@ onMounted(() => {
 
 // Set page title
 useHead({
-  title: computed(() => product.value ? `${product.value.title} | AST Air Buds | Best Wireless Earbuds & Audio Accessories` : 'Product | AST Air Buds | Best Wireless Earbuds & Audio Accessories')
+  title: computed(() => product.value ? `${product.value.title} | AST Earbuds | Best Wireless Earbuds & Audio Accessories` : 'Product | AST Earbuds | Best Wireless Earbuds & Audio Accessories')
 })
 </script>
