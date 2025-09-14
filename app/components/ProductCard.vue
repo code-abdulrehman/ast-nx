@@ -31,21 +31,46 @@ const { off, reviews } = useQuickData()
 const stars = computed(() =>
   Array.from({ length: 5 }, (_, i) => i < Math.floor(ratings))
 );
+
+// Handle image loading errors
+const handleImageError = (event) => {
+  console.warn('ProductCard image failed to load:', event.target.src)
+  
+  // Try fallback image first
+  if (!event.target.dataset.fallbackTried) {
+    event.target.dataset.fallbackTried = 'true'
+    // Try a generic placeholder image
+    event.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzljYTNhZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlPC90ZXh0Pjwvc3ZnPg=='
+    return
+  }
+  
+  // If fallback also fails, show placeholder
+  event.target.style.display = 'none'
+  const parent = event.target.parentElement
+  if (parent && !parent.querySelector('.image-placeholder')) {
+    const placeholder = document.createElement('div')
+    placeholder.className = 'image-placeholder absolute inset-0 w-full h-full flex items-center justify-center bg-gray-200'
+    placeholder.innerHTML = '<div class="text-gray-400 text-center"><div class="text-2xl mb-2">📷</div><div class="text-sm">Image not available</div></div>'
+    parent.appendChild(placeholder)
+  }
+}
 </script>
 
 <template>
-  <RouterLink :to="`/product/${product_id}`" class="block">
+  <RouterLink :to="`/product/${product_id}`" class="block" aria-label="ast-product-opening">
     <div
       class="relative flex flex-col bg-white overflow-hidden rounded-lg hover:shadow-md group"
     >
       <!-- Product Image -->
-      <div class="relative mx-3 mt-3 flex h-60 justify-center overflow-hidden rounded-xl">
+      <div class="relative mx-3 mt-3 flex h-60 justify-center overflow-hidden rounded-xl bg-gradient-to-br from-gray-400 to-gray-600">
         <!-- Blurry background for feature image -->
         <img
           v-if="product_feature_img && !product_images[0]?.includes('/ast/products/posts/')"
           :src="product_feature_img"
           :alt="title"
           class="absolute inset-0 w-full h-full object-cover filter blur-[14px] scale-110"
+          loading="lazy"
+          @error="handleImageError"
         />
 
         <!-- Main product image -->
@@ -65,6 +90,8 @@ const stars = computed(() =>
             scale: product_images[0]?.includes('/ast/products/posts/') ? '1.2' : '1',
             top: product_images[0]?.includes('/ast/products/posts/') ? '-18px' : '0'
           }"
+          loading="lazy"
+          @error="handleImageError"
         />
 
         <!-- Discount Badge -->
@@ -76,11 +103,11 @@ const stars = computed(() =>
 
         <!-- Mood Badge -->
         <span
-          v-if="mood"
-          class="absolute top-0 right-0 m-2 rounded-full px-2 text-xs font-medium text-white z-20"
+          v-if="mood === 'Gaming'"
+          class="absolute top-0 right-0 m-2 rounded-full px-2 text-xs font-medium text-white z-20 flex justify-center items-center gap-1"
           :class="mood === 'Gaming' ? 'bg-primary' : 'bg-gray-600'"
         >
-          <i class="fa-solid fa-gamepad" v-if="mood === 'Gaming'"></i>
+        <IconGamePad v-if="mood === 'Gaming'" class="text-white w-5 h-5" />
           {{ mood }}
         </span>
       </div>
@@ -89,7 +116,7 @@ const stars = computed(() =>
       <div class="mt-4 px-5 pb-5">
         <!-- Title -->
         <h2
-          class="title text-xl tracking-tight text-slate-900 truncate"
+          class="title text-xl tracking-tight text-slate-900 truncate font-semibold"
           :title="title"
         >
           {{ title }}

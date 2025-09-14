@@ -13,7 +13,7 @@ defineProps({
 // I18n
 const { locale } = useI18n()
 
-// Use the new language data composable
+// Use language data from imported files - instant loading
 const { headerData, t, pending, error } = useLanguageData()
 
 // Direction utilities
@@ -87,7 +87,7 @@ const clearSearch = () => {
 
 // SEO Meta tags and direction
 useHead({
-  title: computed(() => headerData.value?.meta ? t(headerData.value?.meta?.title || 'meta.title') : 'Loading...'),
+  title: computed(() => t('meta.title')),
   htmlAttrs: {
     dir: textDirection,
     lang: computed(() => locale.value || 'en')
@@ -95,11 +95,11 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: computed(() => headerData.value?.meta ? t(headerData.value?.meta?.description || 'meta.description') : 'Loading...')
+      content: computed(() => t('meta.description'))
     },
     {
       name: 'keywords',
-      content: computed(() => headerData.value?.meta ? t(headerData.value?.meta?.keywords || 'meta.keywords') : 'Loading...')
+      content: computed(() => t('meta.keywords'))
     }
   ]
 })
@@ -127,21 +127,10 @@ watchEffect(() => {
 </script>
 
 <template>
-  <!-- Error state -->
-  <div v-if="error" class="w-screen sticky top-0 z-50 bg-red-100 text-red-800 p-4 text-center">
-    Error loading header data: {{ error.message }}
-  </div>
-  
-  <!-- Loading state -->
-  <div v-else-if="pending" class="w-screen sticky top-0 z-50 bg-gray-100 p-4 text-center">
-    Loading header...
-  </div>
-  
-  <!-- Main header -->
+  <!-- Main header - no loading states since data is hardcoded -->
   <header
-    v-else
     id="/"
-    class="w-screen sticky top-0 z-50 transition-all duration-200"
+    class="w-full transition-all duration-200"
     :class="[
       isScrolled
         ? 'bg-primary text-white backdrop-blur-xl shadow-lg py-1'
@@ -149,6 +138,7 @@ watchEffect(() => {
       textAlign
     ]"
     :dir="textDirection"
+    style="position: sticky; top: 0; z-index: 50; width: 100%;"
   >
   
     <nav class="container mx-auto flex flex-row justify-between gap-6 px-4 flex-wrap items-center" :dir="textDirection">
@@ -156,7 +146,7 @@ watchEffect(() => {
       <ul class="col-span-1 flex items-center w-auto">
         <li>
           <Logo
-            :text="logoText || t(headerData?.logo?.text || 'logo.text')"
+            :text="logoText || t((headerData as any)?.logo?.text || 'logo.text')"
             :class="isScrolled ? 'text-white hover:text-gray-100 h-auto' : 'text-gray-800 hover:text-gray-700 h-auto'"
             :fill="isScrolled ? 'white' : 'black'"
           />
@@ -169,7 +159,7 @@ watchEffect(() => {
           <input
             id="search"
             type="text"
-            :placeholder="t(headerData?.search?.placeholder || 'search.placeholder')"
+            :placeholder="t((headerData as any)?.search?.placeholder || 'search.placeholder')"
             v-model="searchQuery"
             class="w-full px-4 py-2 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
             :class="[
@@ -189,6 +179,7 @@ watchEffect(() => {
 
           <!-- Clear button -->
           <button
+            aria-label="search-input-clear-button"
             v-if="searchQuery"
             type="button"
             @click="clearSearch"
@@ -200,6 +191,7 @@ watchEffect(() => {
 
           <!-- Search button -->
           <button
+            aria-label="ast-search-button"
             type="submit"
             class="absolute inset-y-0 flex items-center"
             :class="[
@@ -217,7 +209,7 @@ watchEffect(() => {
         </form>
       </div>
       <!-- Icons -->
-      <ul class="order-3 flex justify-end items-center gap-2">
+      <div class="order-3 flex justify-end items-center gap-2">
         <!-- Language Switcher -->
         <LanguageSwitcher :is-scrolled="isScrolled" />
 
@@ -232,16 +224,16 @@ watchEffect(() => {
         </button>
 
         <!-- Store -->
-        <NuxtLink to="#store">
+        <NuxtLink to="#store" aria-label="ast-products-store-link">
           <button
-            :aria-label="t(headerData?.navigation?.store || 'navigation.store')"
+            :aria-label="t((headerData as any)?.navigation?.store || 'navigation.store')"
             class="px-2 py-2 rounded-lg transition-colors duration-200"
             :class="isScrolled ? 'text-white hover:text-gray-200' : 'text-gray-800 hover:text-primary'"
           >
             <IconStore class="w-5 h-5" />
           </button>
         </NuxtLink>
-      </ul>
+      </div>
     </nav>
 
     <!-- Mobile Search -->
@@ -253,7 +245,7 @@ watchEffect(() => {
       <form @submit="handleSearch" class="relative flex-1">
         <input
           type="text"
-          :placeholder="t(headerData?.search?.placeholder || 'search.placeholder')"
+          :placeholder="t((headerData as any)?.search?.placeholder || 'search.placeholder')"
           v-model="searchQuery"
           autofocus
           class="w-full px-4 py-2 text-gray-700 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white"
@@ -269,6 +261,7 @@ watchEffect(() => {
 
         <!-- Clear button -->
         <button
+          aria-label="ast-clear-seach-button"
           v-if="searchQuery"
           type="button"
           @click="clearSearch"
@@ -280,6 +273,7 @@ watchEffect(() => {
 
         <!-- Search button -->
         <button 
+          aria-label="ast-search-button"
           type="submit" 
           class="absolute inset-y-0 flex items-center text-gray-400 hover:text-primary"
           :class="iconPosition.right"

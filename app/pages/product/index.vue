@@ -4,7 +4,7 @@
     <nav class="flex mb-8" aria-label="Breadcrumb">
       <ol class="inline-flex items-center space-x-1 md:space-x-3">
         <li class="inline-flex items-center">
-          <NuxtLink to="/" class="text-gray-700 hover:text-primary">
+          <NuxtLink to="/" class="text-gray-700 hover:text-primary" aria-label="ast-homepage-link">
             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
             </svg>
@@ -98,6 +98,7 @@
           <!-- Actions -->
           <div class="flex space-x-2">
             <NuxtLink 
+              aria-label="ast-single-product-page-link"
               :to="`/product/${product.id}`"
               class="flex-1 bg-primary text-white text-center px-4 py-2 rounded-lg hover:bg-primary-hover transition-colors text-sm font-medium"
             >
@@ -115,7 +116,9 @@
 
     <!-- Load More -->
     <div class="text-center mt-12">
-      <button class="bg-gray-100 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-200 transition-colors font-medium">
+      <button
+      aria-label="ast-load-more-products-button"
+      class="bg-gray-100 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-200 transition-colors font-medium">
         Load More Products
       </button>
     </div>

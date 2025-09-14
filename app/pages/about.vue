@@ -4,7 +4,7 @@
     <nav class="flex mb-8" aria-label="Breadcrumb">
       <ol class="inline-flex items-center space-x-1 md:space-x-3">
         <li class="inline-flex items-center">
-          <NuxtLink to="/" class="text-gray-700 hover:text-primary">
+          <NuxtLink to="/" class="text-gray-700 hover:text-primary" aria-label="ast-about-link">
             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
             </svg>
@@ -159,12 +159,14 @@
       <p class="text-gray-600 mb-8">Join thousands of satisfied customers who trust AST for their needs.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <NuxtLink 
+          aria-label="ast-product-page-link"
           to="/product" 
           class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary-hover transition-colors font-medium"
         >
           View Our Products
         </NuxtLink>
         <NuxtLink 
+          aria-label="ast-contact-page-link"
           to="/contact" 
           class="border border-primary text-primary px-8 py-3 rounded-lg hover:bg-blue-50 transition-colors font-medium"
         >

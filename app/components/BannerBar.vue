@@ -68,34 +68,38 @@ const bannerConfig = computed(() => {
       containerItemClass: "h-6 flex items-center"
     },
     colorful: {
-      containerClass: "bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white py-2 relative overflow-hidden",
+      containerClass: "text-white py-2 relative overflow-hidden",
       speed: 0.7,
       repeatCount: 3,
       itemClass: "text-sm font-semibold whitespace-nowrap px-6 text-white gap-4",
       containerItemClass: "h-4 flex items-center",
-      pauseOnHover: true
+      pauseOnHover: true,
+      backgroundStyle: "background: linear-gradient(to right, #9333ea, #ec4899, #dc2626);"
     },
     business: {
-      containerClass: "bg-blue-900 text-white py-1",
+      containerClass: "text-white py-1",
       speed: 0.5,
       repeatCount: 2,
       itemClass: "text-sm font-medium whitespace-nowrap px-8 text-white",
-      containerItemClass: "h-7 flex items-center"
+      containerItemClass: "h-7 flex items-center",
+      backgroundStyle: "background-color: #1e3a8a;"
     },
     sale: {
-      containerClass: "bg-gradient-to-r from-red-500 to-orange-500 text-white py-2 relative overflow-hidden",
+      containerClass: "text-white py-2 relative overflow-hidden",
       speed: 1,
       repeatCount: 4,
       itemClass: "text-sm font-bold whitespace-nowrap px-6 animate-pulse text-white",
       containerItemClass: "h-8 flex items-center",
-      pauseOnHover: true
+      pauseOnHover: true,
+      backgroundStyle: "background: linear-gradient(to right, #ef4444, #f97316);"
     },
     news: {
-      containerClass: "bg-black text-green-400 py-1 font-mono",
+      containerClass: "text-green-400 py-1 font-mono",
       speed: 0.8,
       repeatCount: 3,
       itemClass: "text-xs font-mono whitespace-nowrap px-4 text-green-400",
-      containerItemClass: "h-6 flex items-center"
+      containerItemClass: "h-6 flex items-center",
+      backgroundStyle: "background-color: #000000;"
     }
   };
   
@@ -118,7 +122,7 @@ const bannerConfig = computed(() => {
     </div>
 
     <!-- Colorful Variant -->
-    <div v-else-if="variant === 'colorful'" :class="bannerConfig.containerClass">
+    <div v-else-if="variant === 'colorful'" :class="bannerConfig.containerClass" :style="bannerConfig.backgroundStyle">
       <div class="w-screen mx-auto">
         <AutoScrolling
           :items="announcementsList"
@@ -133,7 +137,7 @@ const bannerConfig = computed(() => {
     </div>
 
     <!-- Business Variant -->
-    <div v-else-if="variant === 'business'" :class="bannerConfig.containerClass">
+    <div v-else-if="variant === 'business'" :class="bannerConfig.containerClass" :style="bannerConfig.backgroundStyle">
       <div class="container mx-auto px-4">
         <AutoScrolling
           :items="announcementsList"
@@ -147,7 +151,7 @@ const bannerConfig = computed(() => {
     </div>
 
     <!-- Sale Variant -->
-    <div v-else-if="variant === 'sale'" :class="bannerConfig.containerClass">
+    <div v-else-if="variant === 'sale'" :class="bannerConfig.containerClass" :style="bannerConfig.backgroundStyle">
       <div class="container mx-auto px-4">
         <AutoScrolling
           :items="announcementsList"
@@ -161,13 +165,13 @@ const bannerConfig = computed(() => {
       </div>
       <!-- Animated background elements -->
       <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div class="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-red-500 to-transparent animate-pulse"></div>
-        <div class="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-orange-500 to-transparent animate-pulse"></div>
+        <div class="absolute top-0 left-0 w-20 h-full animate-pulse" style="background: linear-gradient(to right, #ef4444, transparent);"></div>
+        <div class="absolute top-0 right-0 w-20 h-full animate-pulse" style="background: linear-gradient(to left, #f97316, transparent);"></div>
       </div>
     </div>
 
     <!-- News Ticker Variant -->
-    <div v-else-if="variant === 'news'" :class="bannerConfig.containerClass">
+    <div v-else-if="variant === 'news'" :class="bannerConfig.containerClass" :style="bannerConfig.backgroundStyle">
       <div class="container mx-auto px-4">
         <div class="flex items-center">
           <span class="text-green-500 font-bold mr-4">LIVE:</span>
@@ -184,7 +188,7 @@ const bannerConfig = computed(() => {
     </div>
 
     <!-- Default Colorful Variant -->
-    <div v-else :class="bannerConfig.containerClass">
+    <div v-else :class="bannerConfig.containerClass" :style="bannerConfig.backgroundStyle">
       <div class="w-screen mx-auto">
         <AutoScrolling
           :items="announcementsList"

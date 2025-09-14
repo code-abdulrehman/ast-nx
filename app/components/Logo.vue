@@ -36,6 +36,7 @@ defineProps({
     to="/"
     class="flex font-bold flex-col items-start gap-0"
     :class="[ `text-${textSize}`, className ]"
+    aria-label="ast-logo"
   >
 
     <!-- SVG Logo -->

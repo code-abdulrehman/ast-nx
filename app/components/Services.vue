@@ -1,8 +1,5 @@
 <script setup>
-import IconTruck from './icon/truck.vue';
-import IconDiscount from './icon/discount.vue';
-import IconWallet from './icon/wallet.vue';
-import IconHeadset from './icon/headset.vue';
+import Icon from './Icon.vue'
 import { useI18n } from '#imports'
 
 // I18n
@@ -15,14 +12,6 @@ const { textAlign, htmlAttributes } = useDirection(ref(locale));
 const { servicesData, t, pending, error } = useLanguageData()
 const title = computed(() => servicesData.value?.title || 'title')
 const items = computed(() => servicesData.value?.items || [])
-
-// Icon mapping
-const iconMap = {
-  truck: IconTruck,
-  discount: IconDiscount,
-  wallet: IconWallet,
-  headset: IconHeadset,
-};
 
 </script>
 
@@ -43,12 +32,17 @@ const iconMap = {
         :key="idx"
         class="p-2 flex flex-col justify-center items-center gap-2 hover:scale-105 cursor-default transition-all duration-100"
       >
-        <component :is="iconMap[service.icon]" class="font-bold text-white w-10 h-10 p-1" />
+        <Icon 
+          :name="service.icon" 
+          size="2xl" 
+          color="font-bold text-white" 
+          custom-class="p-1" 
+        />
         <div class="flex flex-col justify-center items-center">
           <h3 class="text-lg font-bold text-white text-center" :class="textAlign">
             {{ service.title }}
           </h3>
-          <p class="text-gray-100 text-md text-center" :class="textAlign">
+          <p class="text-gray-100 text-md text-center min-w-2/4" :class="textAlign">
             {{ service.description }}
           </p>
         </div>

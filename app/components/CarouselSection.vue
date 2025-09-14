@@ -22,6 +22,29 @@ const getAbsoluteUrl = (path) => {
   return path
 }
 
+// Handle image loading errors
+const handleImageError = (event) => {
+  console.warn('CarouselSection image failed to load:', event.target.src)
+  
+  // Try fallback image first
+  if (!event.target.dataset.fallbackTried) {
+    event.target.dataset.fallbackTried = 'true'
+    // Try a generic placeholder image
+    event.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzljYTNhZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlPC90ZXh0Pjwvc3ZnPg=='
+    return
+  }
+  
+  // If fallback also fails, show placeholder
+  event.target.style.display = 'none'
+  const parent = event.target.parentElement
+  if (parent && !parent.querySelector('.image-placeholder')) {
+    const placeholder = document.createElement('div')
+    placeholder.className = 'image-placeholder absolute inset-0 w-full h-full flex items-center justify-center bg-gray-200'
+    placeholder.innerHTML = '<div class="text-gray-400 text-center"><div class="text-2xl mb-2">📷</div><div class="text-sm">Image not available</div></div>'
+    parent.appendChild(placeholder)
+  }
+}
+
 // Debug: Log image paths and test image loading
 onMounted(() => {
   console.log('Featured products:', featuredProducts)
@@ -35,16 +58,6 @@ onMounted(() => {
     if (typeof window !== 'undefined') {
       const bannerUrl = getAbsoluteUrl(product.banner_image)
       const productUrl = getAbsoluteUrl(product.product_feature_img)
-      
-      const testBannerImg = new Image()
-      testBannerImg.onload = () => console.log(`✅ Banner image ${index + 1} is accessible:`, bannerUrl)
-      testBannerImg.onerror = () => console.log(`❌ Banner image ${index + 1} failed to load:`, bannerUrl)
-      testBannerImg.src = bannerUrl
-      
-      const testProductImg = new Image()
-      testProductImg.onload = () => console.log(`✅ Product image ${index + 1} is accessible:`, productUrl)
-      testProductImg.onerror = () => console.log(`❌ Product image ${index + 1} failed to load:`, productUrl)
-      testProductImg.src = productUrl
     }
   })
 })
@@ -181,17 +194,15 @@ function getVisibleSlides() {
   <div class="w-full container mx-auto px-4 py-1 md:h-[84vh] h-[63.5vh]">
     <div class="h-full relative">
       <!-- Fixed background -->
-      <div class="absolute inset-0 w-full h-full z-0 pointer-events-none bg-gradient-to-br from-blue-600 to-purple-700 rounded-lg">
+      <div class="absolute inset-0 w-full h-full z-0 pointer-events-none bg-gradient-to-br from-gray-400 to-gray-600 rounded-lg">
         <img
           :src="getAbsoluteUrl(featuredProducts[currentSlide]?.banner_image)"
           alt="banner image"
           class="w-full h-full object-cover rounded-lg"
-          height="100%"
-          width="100%"
-          @error="(e) => console.log('Banner image error:', e.target.src, e)"
-          @load="(e) => console.log('Banner image loaded:', e.target.src)"
+          loading="lazy"
+          @error="handleImageError"
         />
-        <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg" />
+        <!-- <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg" /> -->
       </div>
 
       <!-- Slides -->
@@ -218,8 +229,8 @@ function getVisibleSlides() {
                   :src="getAbsoluteUrl(featuredProducts[idx].product_feature_img)"
                   :alt="featuredProducts[idx].title"
                   class="w-auto h-auto object-cover rounded-lg block mx-2 md:scale-[0.7] scale-125 mb-4"
-                  @error="(e) => console.log('Product image error:', e.target.src)"
-                  @load="(e) => console.log('Product image loaded:', e.target.src)"
+                  loading="lazy"
+                  @error="handleImageError"
                 />
               </div>
               <!-- Text -->
@@ -245,12 +256,13 @@ function getVisibleSlides() {
                 </div>
                 <div class="w-full flex justify-center items-center mb-2">
                   <Button
+                    aria-label="ast-next-product-slide-button"
                     text="Shop Now"
                     color="white"
                     size="md"
                     variant="solid"
-                    icon="shopping-cart"
-                    @click="() => router.push(`/products/${featuredProducts[idx].id}`)"
+                    icon="arrow-right"
+                    @click="() => router.push(`/product/${featuredProducts[idx].id}`)"
                   />
                 </div>
               </div>
@@ -279,7 +291,7 @@ function getVisibleSlides() {
 
       <!-- Dots -->
       <div
-        class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30"
+        class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 items-center z-30"
       >
         <button
           v-for="(_, index) in featuredProducts"

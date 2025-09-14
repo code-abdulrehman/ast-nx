@@ -5,6 +5,40 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
   },
+  devServer: {
+    port: 3000,
+    host: 'localhost',
+    https: false,
+    timeout: 60000, // 60 seconds timeout
+    hmr: {
+      port: 24678,
+      host: 'localhost'
+    }
+  },
+  vite: {
+    server: {
+      hmr: {
+        timeout: 60000,
+        overlay: false
+      },
+      watch: {
+        usePolling: false,
+        interval: 1000
+      }
+    },
+    optimizeDeps: {
+      include: ['vue', 'vue-router']
+    }
+  },
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: 'http://localhost:3000/api',
+        changeOrigin: true,
+        timeout: 60000
+      }
+    }
+  },
   modules: ['@nuxt/ui', '@nuxt/image', '@nuxtjs/i18n', 'nuxt-icon'],
   icon: {
     customCollections: [{
