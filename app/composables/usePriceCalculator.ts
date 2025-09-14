@@ -1,10 +1,12 @@
 import { calculateDiscountedPrice, calculateMultiplePrices, formatPrice, calculateDiscountPercentage } from '../../utils/priceCalculator'
+import { useCurrency } from './useCurrency'
 import type { PriceCalculation } from '../../utils/priceCalculator'
 
 /**
- * Composable for price calculations
+ * Composable for price calculations with currency support
  */
 export const usePriceCalculator = () => {
+  const { formatPrice: currencyFormatPrice, currentCurrency, getPriceBreakdown: currencyGetPriceBreakdown } = useCurrency()
   
   /**
    * Calculate discounted price from original price and discount percentage
@@ -23,9 +25,12 @@ export const usePriceCalculator = () => {
   }
   
   /**
-   * Format price for display
+   * Format price for display with currency support
    */
   const formatPriceDisplay = (price: number, currency: string = 'PKR'): string => {
+    if (currency === currentCurrency.value?.code && currentCurrency.value) {
+      return currencyFormatPrice(price)
+    }
     return formatPrice(price, currency)
   }
   
@@ -37,9 +42,13 @@ export const usePriceCalculator = () => {
   }
   
   /**
-   * Get price breakdown for a product
+   * Get price breakdown for a product with currency support
    */
-  const getPriceBreakdown = (originalPrice: number, discountPercentage: number) => {
+  const getPriceBreakdown = (originalPrice: number, discountPercentage: number, currency?: string) => {
+    if (currency) {
+      return currencyGetPriceBreakdown(originalPrice, discountPercentage, currency)
+    }
+    
     const calculation = getDiscountedPrice(originalPrice, discountPercentage)
     
     return {

@@ -121,5 +121,146 @@
     "country": "البلد",
     "sku": "SKU",
     "tags": "العلامات"
+  },
+  "pricing": {
+    "global": {
+      "defaultCurrency": "PKR",
+      "currencySelector": "اختر العملة",
+      "priceFormat": "{{symbol}}{{amount}}",
+      "thousandSeparator": ",",
+      "decimalSeparator": ".",
+      "decimalPlaces": 0
+    },
+    "currencies": {
+      "PKR": {
+        "name": "الروبية الباكستانية",
+        "symbol": "ر.ب",
+        "code": "PKR",
+        "position": "before",
+        "decimalPlaces": 0,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ar-PK"
+      },
+      "USD": {
+        "name": "الدولار الأمريكي",
+        "symbol": "$",
+        "code": "USD",
+        "position": "before",
+        "decimalPlaces": 2,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ar-US"
+      },
+      "AED": {
+        "name": "الدرهم الإماراتي",
+        "symbol": "د.إ",
+        "code": "AED",
+        "position": "before",
+        "decimalPlaces": 2,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ar-AE"
+      },
+      "SAR": {
+        "name": "الريال السعودي",
+        "symbol": "ر.س",
+        "code": "SAR",
+        "position": "before",
+        "decimalPlaces": 2,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ar-SA"
+      },
+      "EUR": {
+        "name": "اليورو",
+        "symbol": "€",
+        "code": "EUR",
+        "position": "after",
+        "decimalPlaces": 2,
+        "thousandSeparator": ".",
+        "decimalSeparator": ",",
+        "locale": "ar-EU"
+      },
+      "GBP": {
+        "name": "الجنيه الإسترليني",
+        "symbol": "£",
+        "code": "GBP",
+        "position": "before",
+        "decimalPlaces": 2,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ar-GB"
+      },
+      "INR": {
+        "name": "الروبية الهندية",
+        "symbol": "₹",
+        "code": "INR",
+        "position": "before",
+        "decimalPlaces": 0,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ar-IN"
+      },
+      "QAR": {
+        "name": "الريال القطري",
+        "symbol": "ر.ق",
+        "code": "QAR",
+        "position": "before",
+        "decimalPlaces": 2,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ar-QA"
+      },
+      "KWD": {
+        "name": "الدينار الكويتي",
+        "symbol": "د.ك",
+        "code": "KWD",
+        "position": "before",
+        "decimalPlaces": 3,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ar-KW"
+      },
+      "BHD": {
+        "name": "الدينار البحريني",
+        "symbol": "د.ب",
+        "code": "BHD",
+        "position": "before",
+        "decimalPlaces": 3,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ar-BH"
+      }
+    },
+    "exchangeRates": {
+      "base": "PKR",
+      "rates": {
+        "USD": 0.0036,
+        "AED": 0.013,
+        "SAR": 0.013,
+        "EUR": 0.0033,
+        "GBP": 0.0028,
+        "INR": 0.30,
+        "QAR": 0.013,
+        "KWD": 0.0011,
+        "BHD": 0.0014
+      }
+    },
+    "labels": {
+      "originalPrice": "السعر الأصلي",
+      "discountedPrice": "السعر المخفض",
+      "savings": "توفير",
+      "discount": "خصم",
+      "price": "السعر",
+      "total": "المجموع",
+      "subtotal": "المجموع الفرعي",
+      "tax": "الضريبة",
+      "shipping": "الشحن",
+      "free": "مجاني",
+      "calculate": "حساب السعر",
+      "convert": "تحويل العملة",
+      "selectCurrency": "اختر العملة"
+    }
   }
 }

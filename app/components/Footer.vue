@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import Icon from './Icon.vue'
 import Logo from '~/components/Logo.vue'
+import CurrencySelector from '~/components/CurrencySelector.vue'
 
 // Use the new language data composable
 const { footerData, t, pending, error } = useLanguageData()
@@ -13,7 +14,7 @@ const currentYear = new Date().getFullYear()
 <template>
   <!-- Error state -->
   <div v-if="error" class="w-screen bg-red-100 text-red-800 p-4 text-center">
-    Error loading footer data: {{ error.message }}
+    Error loading footer data: {{ error }}
   </div>
   
   <!-- Loading state -->
@@ -28,10 +29,10 @@ const currentYear = new Date().getFullYear()
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 py-4">
         <!-- Left: Social Media Icons -->
         <div class="flex items-center gap-3">
-          <span class="text-sm text-gray-600 hidden md:block">{{ t(footerData?.social?.title || 'social.title') }}:</span>
+          <span class="text-sm text-gray-600 hidden md:block">{{ t((footerData as any)?.social?.title || 'social.title') }}:</span>
           <div class="flex items-center gap-3">
             <a
-              v-for="(social, index) in footerData?.social?.icons"
+              v-for="(social, index) in (footerData as any)?.social?.icons"
               :key="index"
               :href="social.link"
               target="_blank"
@@ -63,6 +64,10 @@ const currentYear = new Date().getFullYear()
             <span>{{ t(footerData?.copyright?.text || 'copyright.text') }}</span><Logo className="w-8 h-8" logoSize="w-8 h-8" /> <span> © {{ currentYear }}</span>
           </div>
         </div>
+
+        <!-- <div class="flex items-center gap-3">
+          <CurrencySelector />
+        </div> -->
 
       </div>
     </footer>

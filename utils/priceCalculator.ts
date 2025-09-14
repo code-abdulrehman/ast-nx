@@ -56,13 +56,52 @@ export function calculateMultiplePrices<T extends { originalPrice: number; disco
 }
 
 /**
- * Format price for display
+ * Format price for display with multiple currency support
  * @param price - The price to format
- * @param currency - Currency symbol (default: 'PKR')
+ * @param currency - Currency code (default: 'PKR')
+ * @param currencyData - Currency configuration object
  * @returns Formatted price string
  */
-export function formatPrice(price: number, currency: string = 'PKR'): string {
+export function formatPrice(price: number, currency: string = 'PKR', currencyData?: any): string {
+  if (currencyData) {
+    const { symbol, position, decimalPlaces, thousandSeparator, decimalSeparator } = currencyData
+    
+    // Format number with proper decimal places and separators
+    const formattedNumber = formatNumber(price, decimalPlaces, thousandSeparator, decimalSeparator)
+    
+    // Apply currency symbol position
+    if (position === 'after') {
+      return `${formattedNumber} ${symbol}`
+    } else {
+      return `${symbol}${formattedNumber}`
+    }
+  }
+  
+  // Fallback to simple formatting
   return `${currency} ${price.toLocaleString()}`
+}
+
+/**
+ * Format number with separators
+ * @param amount - The amount to format
+ * @param decimalPlaces - Number of decimal places
+ * @param thousandSeparator - Thousand separator character
+ * @param decimalSeparator - Decimal separator character
+ * @returns Formatted number string
+ */
+export function formatNumber(amount: number, decimalPlaces: number, thousandSeparator: string, decimalSeparator: string): string {
+  const fixedAmount = amount.toFixed(decimalPlaces)
+  const [integerPart, decimalPart] = fixedAmount.split('.')
+  
+  // Add thousand separators
+  const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator)
+  
+  // Combine with decimal part if needed
+  if (decimalPlaces > 0 && decimalPart) {
+    return `${formattedInteger}${decimalSeparator}${decimalPart}`
+  }
+  
+  return formattedInteger
 }
 
 /**

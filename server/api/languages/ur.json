@@ -121,5 +121,146 @@
     "country": "ملک",
     "sku": "SKU",
     "tags": "ٹیگز"
+  },
+  "pricing": {
+    "global": {
+      "defaultCurrency": "PKR",
+      "currencySelector": "کرنسی منتخب کریں",
+      "priceFormat": "{{symbol}}{{amount}}",
+      "thousandSeparator": ",",
+      "decimalSeparator": ".",
+      "decimalPlaces": 0
+    },
+    "currencies": {
+      "PKR": {
+        "name": "پاکستانی روپیہ",
+        "symbol": "روپے",
+        "code": "PKR",
+        "position": "before",
+        "decimalPlaces": 0,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ur-PK"
+      },
+      "USD": {
+        "name": "امریکی ڈالر",
+        "symbol": "$",
+        "code": "USD",
+        "position": "before",
+        "decimalPlaces": 2,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ur-US"
+      },
+      "AED": {
+        "name": "متحدہ عرب امارات درہم",
+        "symbol": "د.إ",
+        "code": "AED",
+        "position": "before",
+        "decimalPlaces": 2,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ur-AE"
+      },
+      "SAR": {
+        "name": "سعودی ریال",
+        "symbol": "ر.س",
+        "code": "SAR",
+        "position": "before",
+        "decimalPlaces": 2,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ur-SA"
+      },
+      "EUR": {
+        "name": "یورو",
+        "symbol": "€",
+        "code": "EUR",
+        "position": "after",
+        "decimalPlaces": 2,
+        "thousandSeparator": ".",
+        "decimalSeparator": ",",
+        "locale": "ur-EU"
+      },
+      "GBP": {
+        "name": "برطانوی پاؤنڈ",
+        "symbol": "£",
+        "code": "GBP",
+        "position": "before",
+        "decimalPlaces": 2,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ur-GB"
+      },
+      "INR": {
+        "name": "بھارتی روپیہ",
+        "symbol": "₹",
+        "code": "INR",
+        "position": "before",
+        "decimalPlaces": 0,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ur-IN"
+      },
+      "QAR": {
+        "name": "قطری ریال",
+        "symbol": "ر.ق",
+        "code": "QAR",
+        "position": "before",
+        "decimalPlaces": 2,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ur-QA"
+      },
+      "KWD": {
+        "name": "کویتی دینار",
+        "symbol": "د.ك",
+        "code": "KWD",
+        "position": "before",
+        "decimalPlaces": 3,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ur-KW"
+      },
+      "BHD": {
+        "name": "بحرینی دینار",
+        "symbol": "د.ب",
+        "code": "BHD",
+        "position": "before",
+        "decimalPlaces": 3,
+        "thousandSeparator": ",",
+        "decimalSeparator": ".",
+        "locale": "ur-BH"
+      }
+    },
+    "exchangeRates": {
+      "base": "PKR",
+      "rates": {
+        "USD": 0.0036,
+        "AED": 0.013,
+        "SAR": 0.013,
+        "EUR": 0.0033,
+        "GBP": 0.0028,
+        "INR": 0.30,
+        "QAR": 0.013,
+        "KWD": 0.0011,
+        "BHD": 0.0014
+      }
+    },
+    "labels": {
+      "originalPrice": "اصل قیمت",
+      "discountedPrice": "رعایتی قیمت",
+      "savings": "آپ کی بچت",
+      "discount": "رعایت",
+      "price": "قیمت",
+      "total": "کل",
+      "subtotal": "ذیلی کل",
+      "tax": "ٹیکس",
+      "shipping": "شپنگ",
+      "free": "مفت",
+      "calculate": "قیمت کا حساب",
+      "convert": "کرنسی تبدیل کریں",
+      "selectCurrency": "کرنسی منتخب کریں"
+    }
   }
 }
