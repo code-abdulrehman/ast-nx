@@ -40,7 +40,7 @@
               color="primary"
               size="md"
               variant="outline"
-              @click="$router.push('/')"
+              @click="navigateToHome"
             />
           </div>
         </div>
@@ -52,7 +52,7 @@
           <!-- Breadcrumb Navigation -->
           <nav class="mb-6">
             <button 
-              @click="$router.push('/')"
+              @click="navigateToHome"
               class="text-primary hover:text-primary/80 flex items-center gap-2 transition-colors"
             >
               <Icon name="arrow-left" size="sm" :class="iconRotation"/>
@@ -416,9 +416,19 @@ const handleWhatsAppOrder = () => {
   window.open(whatsappUrl, '_blank')
 }
 
+const getLocalizedHomeUrl = () => {
+  const baseUrl = '/'
+  // If locale is 'en' (default), don't add prefix
+  if (locale.value === 'en') {
+    return baseUrl
+  }
+  // For other locales, add the locale prefix
+  return `/${locale.value}${baseUrl}`
+}
+
 // Navigate to home
 const navigateToHome = () => {
-  router.push('/')
+  router.push(getLocalizedHomeUrl())
   // Scroll to top when navigating to home
   setTimeout(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -440,6 +450,6 @@ onMounted(() => {
 
 // Set page title
 useHead({
-  title: computed(() => product.value ? `${product.value.title} | AST - Abdulrehman Sapra Telecom` : 'Product | AST - Abdulrehman Sapra Telecom')
+  title: computed(() => product.value ? `${product.value.title} | AST Air Buds | Best Wireless Earbuds & Audio Accessories` : 'Product | AST Air Buds | Best Wireless Earbuds & Audio Accessories')
 })
 </script>

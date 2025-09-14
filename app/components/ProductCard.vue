@@ -3,6 +3,9 @@ import { computed } from "vue";
 import { useQuickData } from '~/composables/useLanguageSnippets'
 import { usePriceCalculator } from '~/composables/usePriceCalculator'
 
+// Get current locale for URL preservation
+const { locale } = useI18n()
+
 // Props
 const props = defineProps({
   product: {
@@ -38,10 +41,17 @@ const priceBreakdown = computed(() => {
   return null
 })
 
-// Helper → compute filled vs empty stars
-const stars = computed(() =>
-  Array.from({ length: 5 }, (_, i) => i < Math.floor(ratings))
-);
+// Generate localized product URL
+const productUrl = computed(() => {
+  const baseUrl = `/product/${product_id}`
+  // If locale is 'en' (default), don't add prefix
+  if (locale.value === 'en') {
+    return baseUrl
+  }
+  // For other locales, add the locale prefix
+  return `/${locale.value}${baseUrl}`
+})
+
 
 // Handle image loading errors
 const handleImageError = (event) => {
@@ -68,7 +78,7 @@ const handleImageError = (event) => {
 </script>
 
 <template>
-  <RouterLink :to="`/product/${product_id}`" class="block" aria-label="ast-product-opening">
+  <RouterLink :to="productUrl" class="block" aria-label="ast-product-opening">
     <div
       class="relative flex flex-col bg-white overflow-hidden rounded-lg hover:shadow-md group"
     >

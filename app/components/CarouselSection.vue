@@ -5,6 +5,9 @@ import Button from "./Button.vue"
 import { useProducts } from '~/composables/useProducts'
 import { usePriceCalculator } from '~/composables/usePriceCalculator'
 
+// Get current locale for URL preservation
+const { locale } = useI18n()
+
 const currentSlide = ref(0)
 const isAutoPlaying = ref(true)
 const direction = ref(0) // -1 prev, 1 next, 0 direct
@@ -16,6 +19,17 @@ const router = useRouter()
 // Get products data
 const { featured } = useProducts()
 const { getPriceBreakdown, formatPriceDisplay } = usePriceCalculator()
+
+// Generate localized product URL
+const getLocalizedProductUrl = (productId) => {
+  const baseUrl = `/product/${productId}`
+  // If locale is 'en' (default), don't add prefix
+  if (locale.value === 'en') {
+    return baseUrl
+  }
+  // For other locales, add the locale prefix
+  return `/${locale.value}${baseUrl}`
+}
 
 // Get first 3 featured products for carousel
 const featuredProducts = computed(() => {
@@ -258,7 +272,7 @@ function getVisibleSlides() {
                     size="md"
                     variant="solid"
                     icon="arrow-right"
-                    @click="() => router.push(`/product/${featuredProducts[idx].id}`)"
+                    @click="() => router.push(getLocalizedProductUrl(featuredProducts[idx].id))"
                   />
                 </div>
               </div>

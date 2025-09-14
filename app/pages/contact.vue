@@ -4,7 +4,7 @@
     <nav class="flex mb-8" aria-label="Breadcrumb">
       <ol class="inline-flex items-center space-x-1 md:space-x-3">
         <li class="inline-flex items-center">
-          <NuxtLink to="/" class="text-gray-700 hover:text-primary" aria-label="ast-homepage-link">
+          <NuxtLink :to="getLocalizedHomeUrl()" class="text-gray-700 hover:text-primary" aria-label="ast-homepage-link">
             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
             </svg>
@@ -224,6 +224,9 @@
 </template>
 
 <script setup>
+// Get current locale for URL preservation
+const { locale } = useI18n()
+
 // Set page title
 useHead({
   title: 'Contact Us - AST',
@@ -231,6 +234,17 @@ useHead({
     { name: 'description', content: 'Get in touch with AST. Send us a message and we\'ll respond as soon as possible. We\'re here to help with any questions or concerns.' }
   ]
 })
+
+// Generate localized home URL
+const getLocalizedHomeUrl = () => {
+  const baseUrl = '/'
+  // If locale is 'en' (default), don't add prefix
+  if (locale.value === 'en') {
+    return baseUrl
+  }
+  // For other locales, add the locale prefix
+  return `/${locale.value}${baseUrl}`
+}
 
 // Form data
 const form = ref({
