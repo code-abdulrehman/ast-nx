@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-bind="htmlAttributes">
     <!-- Loading Indicator -->
     <div v-if="isLoading" class="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
       <div class="h-full bg-gradient-to-r from-primary to-green-500 animate-pulse"></div>
@@ -55,7 +55,7 @@
               @click="$router.push('/')"
               class="text-primary hover:text-primary/80 flex items-center gap-2 transition-colors"
             >
-              <Icon name="arrow-right" size="sm" custom-class="rotate-180" />
+              <Icon name="arrow-left" size="sm" :class="iconRotation"/>
               {{ back }}
             </button>
           </nav>
@@ -67,11 +67,11 @@
             <!-- Product Images -->
             <div class="space-y-4 flex flex-row md:flex-col justify-between md:justify-center md:items-center items-start gap-2">
               <!-- Main Image -->
-                <div class="aspect-square rounded-lg overflow-hidden h-[36vh] md:h-[450px] w-[100%] flex-1 bg-gradient-to-b from-gray-400 to-gray-600">
+                <div class="aspect-square rounded-lg overflow-hidden h-[36vh] md:h-[480px] w-[100%] flex-1 bg-gradient-to-b from-gray-400 to-gray-600">
                   <img
                     :src="getMainImage()"
                     :alt="product.title"
-                    class="w-full object-cover drop-shadow-md shadow-primary h-full md:h-[450px]"
+                    class="w-full object-cover drop-shadow-md shadow-primary h-full"
                     loading="lazy"
                     @error="handleImageError"
                   />
@@ -132,14 +132,14 @@
 
               <!-- Price -->
               <div class="flex items-center gap-4">
-                <span v-if="product.discount_price" class="text-3xl font-bold text-green-500">
-                  Rs.{{ product.discount_price }}
+                <span v-if="priceBreakdown" class="text-3xl font-bold text-green-500">
+                  {{ formatPriceDisplay(priceBreakdown.discounted) }}
                 </span>
-                <span v-if="product.current_price" class="text-xl line-through text-gray-500">
-                  Rs.{{ product.current_price }}
+                <span v-if="priceBreakdown" class="text-xl line-through text-gray-500">
+                  {{ formatPriceDisplay(priceBreakdown.original) }}
                 </span>
-                <span v-if="product.discount_percentage" class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                  {{ product.discount_percentage }}% {{ off }}
+                <span v-if="priceBreakdown && priceBreakdown.percentage > 0" class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                  {{ priceBreakdown.percentage }}% {{ off }}
                 </span>
               </div>
 
@@ -150,7 +150,7 @@
                   'font-semibold',
                   product.product_stock > 50 ? 'text-green-600' : 'text-red-600'
                 ]">
-                  {{ product.product_stock }} available
+                  {{ product.product_stock }} {{ available }}
                 </span>
               </div>
 
@@ -177,7 +177,7 @@
 
               <!-- Keywords/Tags -->
               <div v-if="product.keywords && product.keywords.length > 0">
-                <h3 class="text-lg font-semibold mb-2">Tags:</h3>
+                <h3 class="text-lg font-semibold mb-2">{{ tags }}:</h3>
                 <div class="flex flex-wrap gap-2">
                   <span
                     v-for="(keyword, index) in product.keywords"
@@ -193,7 +193,7 @@
 
           <!-- Product Details Section -->
           <div v-if="product.detailed_features" class="mt-12">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6">Product Details</h2>
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">{{ productDetails }}</h2>
             <hr class="mb-6" />
             <div class="space-y-6">
               <div
@@ -217,7 +217,7 @@
                 <ul v-else-if="Array.isArray(features)" class="list-disc list-inside space-y-2 pl-2">
                   <li v-for="(feature, index) in features" :key="index" class="text-gray-700">{{ feature }}</li>
                 </ul>
-                <p v-else class="text-gray-700">{{ features }}</p>
+                <p v-else class="text-gray-700">{{ features }} {{ productDetails }}</p>
               </div>
             </div>
           </div>
@@ -244,9 +244,9 @@
 
           <!-- Related Products Section -->
           <div v-if="relatedProducts.length > 0" class="md:mt-16 mt-8" id="store">
-            <hr class="mb-8" />
+            <hr class="mb-8 border-gray-200" />
             <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
-              Latest Products
+              {{ latestProducts }}
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <ProductCard
@@ -259,7 +259,7 @@
             <!-- View All Products Button -->
             <div class="text-center mt-8" id="store">
               <Button
-                text="View All Products"
+                :text="viewAllProducts"
                 color="primary"
                 size="lg"
                 variant="solid"
@@ -277,10 +277,18 @@
 <script setup>
 import { useQuickData } from '~/composables/useLanguageSnippets'
 import { useProducts } from '~/composables/useProducts'
+import { usePriceCalculator } from '~/composables/usePriceCalculator'
 import Button from '~/components/Button.vue'
 import Icon from '~/components/Icon.vue'
 import ProductCard from '~/components/ProductCard.vue'
 import ProductSkeleton from '~/components/ProductSkeleton.vue'
+import { useI18n } from '#imports'
+
+// I18n
+const { locale } = useI18n()
+
+// Use direction composable for RTL/LTR support
+const { htmlAttributes, iconRotation } = useDirection(ref(locale));
 
 // Get route params
 const route = useRoute()
@@ -297,17 +305,34 @@ const {
   category, 
   country, 
   sku, 
-  specifications 
+  specifications,
+  tags,
+  available,
+  productDetails,
+  features,
+  latestProducts,
+  viewAllProducts
 } = useQuickData()
 
 // Products data
 const { getProductById, products, isLoading, hasError } = useProducts()
+
+// Price calculator
+const { getPriceBreakdown, formatPriceDisplay } = usePriceCalculator()
 
 // State
 const product = ref(null)
 const selectedImage = ref(1)
 const relatedProducts = ref([])
 const loadingError = ref(false)
+
+// Calculate prices for current product
+const priceBreakdown = computed(() => {
+  if (product.value && product.value.original_price && product.value.discount_percentage !== undefined) {
+    return getPriceBreakdown(product.value.original_price, product.value.discount_percentage)
+  }
+  return null
+})
 
 // Get product data
 onMounted(async () => {
@@ -384,9 +409,9 @@ const getThumbnailImages = () => {
 
 // WhatsApp order functionality
 const handleWhatsAppOrder = () => {
-  if (!product.value) return
+  if (!product.value || !priceBreakdown.value) return
   
-  const message = `Hi! I want to order: ${product.value.title} - Rs.${product.value.discount_price} \n${window.location.href}`
+  const message = `Hi! I want to order: ${product.value.title} - ${formatPriceDisplay(priceBreakdown.value.discounted)} \n${window.location.href}`
   const whatsappUrl = `https://wa.me/+923066223005?text=${encodeURIComponent(message)}`
   window.open(whatsappUrl, '_blank')
 }
@@ -415,6 +440,6 @@ onMounted(() => {
 
 // Set page title
 useHead({
-  title: computed(() => product.value ? `${product.value.title} - Abdulrehman Sapra Telecom` : 'Product - Abdulrehman Sapra Telecom')
+  title: computed(() => product.value ? `${product.value.title} | AST - Abdulrehman Sapra Telecom` : 'Product | AST - Abdulrehman Sapra Telecom')
 })
 </script>

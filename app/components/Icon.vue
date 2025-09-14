@@ -15,6 +15,7 @@ import IconTikTok from './icon/tiktok.vue'
 import IconWhatsApp from './icon/whatsapp.vue'
 import IconTwitter from './icon/twitter.vue'
 import IconArrowRight from './icon/arrow-right.vue'
+import IconArrowLeft from './icon/arrow-left.vue'
 import IconArrowUp from './icon/arrow-up.vue'
 import IconBadgeCheck from './icon/badge-check.vue'
 import IconBadgePercent from './icon/badge-percent.vue'
@@ -129,6 +130,7 @@ const iconMap = {
   
   // Navigation and UI icons
   'arrow-right': IconArrowRight,
+  'arrow-left': IconArrowLeft,
   'arrow-up': IconArrowUp,
   'badge-check': IconBadgeCheck,
   'badge-percent': IconBadgePercent,

@@ -4,6 +4,7 @@ import { useRoute, useRouter } from "vue-router";
 import ProductCard from "./ProductCard.vue";
 import Services from "./Services.vue";
 import { useQuickData } from '~/composables/useLanguageSnippets'
+import { usePriceCalculator } from '~/composables/usePriceCalculator'
 
 // Props: pass products from parent or store
 const props = defineProps({

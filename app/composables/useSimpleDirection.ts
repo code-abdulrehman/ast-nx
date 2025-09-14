@@ -86,6 +86,9 @@ export const useSimpleDirection = (locale: Ref<string>) => {
   const iconRotation = computed(() => {
     return isRTL.value ? 'rotate-180' : ''
   })
+  const iconRotationReverse = computed(() => {
+    return isRTL.value ? '' : 'rotate-180'
+  })
 
   /**
    * Utility function to get conditional class
@@ -117,7 +120,7 @@ export const useSimpleDirection = (locale: Ref<string>) => {
     buttonPosition,
     dropdownPosition,
     iconRotation,
-    
+    iconRotationReverse,
     // Utility functions
     getConditionalClass,
     getConditionalValue

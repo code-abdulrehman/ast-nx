@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { useQuickData } from '~/composables/useLanguageSnippets'
+import { usePriceCalculator } from '~/composables/usePriceCalculator'
 
 // Props
 const props = defineProps({
@@ -17,15 +18,25 @@ const {
   title,
   product_feature_img,
   product_images,
-  current_price,
+  original_price,
   discount_percentage,
-  discount_price,
   ratings,
   mood
 } = props.product;
 
 // Language data
 const { off, reviews } = useQuickData()
+
+// Price calculator
+const { getPriceBreakdown, formatPriceDisplay } = usePriceCalculator()
+
+// Calculate prices
+const priceBreakdown = computed(() => {
+  if (original_price && discount_percentage !== undefined) {
+    return getPriceBreakdown(original_price, discount_percentage)
+  }
+  return null
+})
 
 // Helper → compute filled vs empty stars
 const stars = computed(() =>
@@ -125,21 +136,23 @@ const handleImageError = (event) => {
         <!-- Price + Ratings -->
         <div class="mt-2 flex items-center justify-between">
           <!-- Price -->
-          <div>
-            <span class="text-xl lg:text-2xl text-primary">Rs.{{ discount_price }}</span>
+          <div v-if="priceBreakdown">
+            <span class="text-xl lg:text-2xl text-primary">{{ formatPriceDisplay(priceBreakdown.discounted) }}</span>
             <span class="text-xs lg:text-sm text-slate-700 line-through ml-1">
-              Rs.{{ current_price }}
+              {{ formatPriceDisplay(priceBreakdown.original) }}
             </span>
+          </div>
+          <div v-else>
+            <span class="text-xl lg:text-2xl text-primary">Price N/A</span>
           </div>
 
           <!-- Ratings -->
           <div class="flex items-center gap-1">
             <div class="flex">
               <svg
-                v-for="(filled, idx) in stars"
-                :key="idx"
+                key="idx"
                 aria-hidden="true"
-                :class="['h-5 w-5', filled ? 'text-yellow-300' : 'text-gray-300']"
+                :class="['h-5 w-5 text-yellow-300']"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >

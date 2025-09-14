@@ -104,7 +104,7 @@
 
       <!-- Specifications Section Skeleton -->
       <div class="mt-8">
-        <hr class="mb-8" />
+        <hr class="mb-8 border-gray-200" />
         <div class="h-6 w-32 bg-gray-200 rounded animate-pulse mb-6"></div>
         <div class="p-l-2">
           <div class="space-y-3 pl-2">
@@ -115,7 +115,7 @@
 
       <!-- Related Products Section Skeleton -->
       <div class="md:mt-16 mt-8">
-        <hr class="mb-8" />
+        <hr class="mb-8 border-gray-200" />
         <div class="h-8 w-48 bg-gray-200 rounded animate-pulse mb-6 mx-auto"></div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div v-for="i in 3" :key="i" class="bg-white rounded-lg shadow-md overflow-hidden">

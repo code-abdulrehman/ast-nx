@@ -32,9 +32,10 @@ const { products, featured, gamingProducts } = useProducts()
 
 // Set page title and meta
 useHead({
-  title: 'Abdulrehman Sapra Telecom - Your Trusted Telecom Partner',
+  title: 'AST | Earbuds | Audio Accessories | Abdulrehman Sapra Telecom - Your Trusted Telecom Partner',
   meta: [
     { name: 'description', content: 'Leading telecom solutions provider offering quality products and services' },
+    { name: 'keywords', content: 'AST, Abdulrehman Sapra Telecom, telecom solutions, quality products, services, buds, earbuds, headphones, audio accessories, china' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
   ]
 })
