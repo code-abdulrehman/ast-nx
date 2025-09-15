@@ -90,6 +90,13 @@ export const useDirection = (locale?: Ref<string>) => {
   const iconRotation = computed(() => {
     return isRTL.value ? 'rotate-180' : ''
   })
+  const iconRotationReverse = computed(() => {
+    return isRTL.value ? '' : 'rotate-180'
+  })
+  const mirror = computed(() => {
+    return isRTL.value ? 'mirror' : ''
+  })
+  
 
   /**
    * Get transform classes for RTL/LTR
@@ -210,6 +217,8 @@ export const useDirection = (locale?: Ref<string>) => {
     
     // Visual utilities
     iconRotation,
+    iconRotationReverse,
+    mirror,
     transform,
     textShadow,
     

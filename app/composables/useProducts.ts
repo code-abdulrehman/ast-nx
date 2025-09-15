@@ -1,12 +1,15 @@
-import type { SupportedLanguage } from '~/server/api/languages/types'
+
+import { useI18n } from '#imports'
+import enProducts from '../../server/data/products/en.json'
+import arProducts from '../../server/data/products/ar.json'
+import urProducts from '../../server/data/products/ur.json'
 
 // Product interface
 export interface Product {
   product_id: number
   title: string
   description: string
-  discount_price: number
-  current_price: number
+  original_price: number
   discount_percentage: number
   product_feature_img: string
   banner_image?: string
@@ -33,97 +36,141 @@ export interface ProductsResponse {
   language: string
 }
 
+// Language-specific product data
+const productDataMap: Record<string, Product[]> = {
+  en: enProducts as unknown as Product[],
+  ar: arProducts as unknown as Product[],
+  ur: urProducts as unknown as Product[],
+}
+
 export const useProducts = () => {
   const { locale } = useI18n()
-  
-  // Fetch all products
-  const { data: allProducts, pending: allPending, error: allError, refresh: refreshAll } = useFetch<ProductsResponse>('/api/products', {
-    query: computed(() => ({ lang: locale.value || 'en' })),
-    key: computed(() => `all-products-${locale.value || 'en'}`),
-    default: () => ({ products: [], total: 0, language: 'en' })
+
+  // Get products data for specific language
+  const getProductsData = (lang: string) => {
+    return productDataMap[lang] || productDataMap.en
+  }
+
+  // Use immediate data - no API calls for instant loading
+  const allProductsData = ref({
+    products: getProductsData(locale.value || 'en'),
+    total: 4,
+    language: locale.value || 'en'
   })
   
-  // Fetch featured products
-  const { data: featuredProducts, pending: featuredPending, error: featuredError, refresh: refreshFeatured } = useFetch<ProductsResponse>('/api/products', {
-    query: computed(() => ({ lang: locale.value || 'en', featured: 'true' })),
-    key: computed(() => `featured-products-${locale.value || 'en'}`),
-    default: () => ({ products: [], total: 0, language: 'en' })
-  })
+  const allPending = ref(false)
+  const allError = ref(null)
   
-  // Fetch gaming products
-  const { data: gamingProducts, pending: gamingPending, error: gamingError, refresh: refreshGaming } = useFetch<ProductsResponse>('/api/products', {
-    query: computed(() => ({ lang: locale.value || 'en', gaming: 'true' })),
-    key: computed(() => `gaming-products-${locale.value || 'en'}`),
-    default: () => ({ products: [], total: 0, language: 'en' })
-  })
+  // No separate API calls - we'll filter on client side
   
-  // Search products
+  // Search products - instant since data is local
   const searchProducts = async (searchTerm: string, limit?: number) => {
-    const { data } = await $fetch<ProductsResponse>('/api/products', {
-      query: {
-        lang: locale.value || 'en',
-        search: searchTerm,
-        ...(limit && { limit: limit.toString() })
-      }
+    const allProducts = allProductsData.value?.products || []
+    const searchTermLower = searchTerm.toLowerCase()
+    
+    const filteredProducts = allProducts.filter(product => {
+      const searchableText = [
+        product.title,
+        product.description,
+        product.category,
+        ...product.keywords
+      ].join(' ').toLowerCase()
+      
+      return searchableText.includes(searchTermLower)
     })
-    return data
+    
+    const limitedProducts = limit ? filteredProducts.slice(0, limit) : filteredProducts
+    
+    return {
+      products: limitedProducts,
+      total: limitedProducts.length,
+      language: locale.value || 'en'
+    }
   }
   
-  // Get product by ID
+  // Get product by ID - instant since data is local
   const getProductById = async (productId: number) => {
-    const { data } = await $fetch<ProductsResponse>('/api/products', {
-      query: {
-        lang: locale.value || 'en'
-      }
-    })
-    return data.products.find(product => product.product_id === productId)
+    const product = allProductsData.value?.products?.find(p => p.product_id === productId)
+    
+    if (product) {
+      return product
+    }
+    
+    // Return a fallback product if not found
+    return {
+      product_id: productId,
+      title: 'Product Not Found',
+      description: 'This product could not be loaded',
+      discount_price: 0,
+      current_price: 0,
+      discount_percentage: 0,
+      product_feature_img: '',
+      product_images: [],
+      product_stock: 0,
+      reviews: 0,
+      ratings: 0,
+      product_colors: [],
+      category: 'Unknown',
+      series: 'Unknown',
+      mood: 'Normal',
+      keywords: [],
+      made_country: 'Unknown',
+      creation_date: new Date().toISOString(),
+      specs: {}
+    }
   }
   
-  // Computed properties for easy access
-  const products = computed(() => allProducts.value?.products || [])
-  const featured = computed(() => featuredProducts.value?.products || [])
-  const gaming = computed(() => gamingProducts.value?.products || [])
+
+  // Computed properties for easy access - always available since data is local
+  const products = computed(() => {
+    return allProductsData.value?.products || []
+  })
   
-  // Loading states
-  const isLoading = computed(() => allPending.value || featuredPending.value || gamingPending.value)
+  const featured = computed(() => {
+    const allProducts = products.value
+    return allProducts.filter(p => p.featured === true)
+  })
   
-  // Error states
-  const hasError = computed(() => allError.value || featuredError.value || gamingError.value)
+  const gaming = computed(() => {
+    const allProducts = products.value
+    return allProducts.filter(p => p.mood === 'Gaming')
+  })
   
-  // Refresh all data
+  // Loading states - always false since data is local
+  const isLoading = computed(() => false)
+  
+  // Error states - always false since data is local
+  const hasError = computed(() => false)
+  
+  // Refresh function - instant since data is local
   const refresh = async () => {
-    await Promise.all([
-      refreshAll(),
-      refreshFeatured(),
-      refreshGaming()
-    ])
+    // Update data with current locale
+    allProductsData.value = {
+      products: getProductsData(locale.value || 'en'),
+      total: 4,
+      language: locale.value || 'en'
+    }
   }
+  
+  const refreshAll = refresh
   
   return {
     // Data
     products,
     featured,
     gaming,
-    allProducts,
-    featuredProducts,
-    gamingProducts,
+    allProducts: allProductsData,
     
     // State
     isLoading,
     hasError,
     allPending,
-    featuredPending,
-    gamingPending,
     allError,
-    featuredError,
-    gamingError,
     
     // Methods
     searchProducts,
     getProductById,
     refresh,
-    refreshAll,
-    refreshFeatured,
-    refreshGaming
+    refreshAll
   }
 }

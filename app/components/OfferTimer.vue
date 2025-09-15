@@ -1,8 +1,6 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
-import arrowImg from "~/assets/images/arrow2.svg";
 import { useLanguageData } from "~/composables/useLanguageData";
-import { useDirection } from "~/composables/useDirection";
 // Props for flexibility
 const props = defineProps({
   futureDate: {
@@ -12,7 +10,6 @@ const props = defineProps({
 });
 
 const { t, productsData } = useLanguageData();
-const { textDirection } = useDirection();
 const timeLeft = ref(calculateTimeLeft(props.futureDate));
 let timerId = null;
 
@@ -60,15 +57,6 @@ onBeforeUnmount(() => {
       <div class="div flex justify-between items-center gap-12">
         <!-- Heading -->
         <div class="heading font-medium text-primary hidden md:block relative">
-          <div class="arrow absolute w-16 z-20">
-            <img
-              :src="arrowImg"
-              alt="arrow"
-              class="relative top-2 -left-10 rotate-[135deg]"
-              width="64"
-              :style="`${textDirection === 'rtl' ? 'transform: scaleX(-1)' : ''}`"
-            />
-          </div>
           {{ t(productsData?.onSale || 'products.onSale') }}
         </div>
 

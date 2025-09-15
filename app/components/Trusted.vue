@@ -8,7 +8,7 @@ const { locale } = useI18n()
 // Use direction composable for RTL/LTR support
 const { htmlAttributes } = useDirection(ref(locale));
 
-// Use the new language data composable
+// Use language data from imported files - instant loading
 const { trustedData, t, pending, error } = useLanguageData()
 const title = computed(() => trustedData.value?.title || 'title')
 
@@ -43,25 +43,15 @@ const brands = [
 </script>
 
 <template>
-  <!-- Error state -->
-  <div v-if="error" class="w-screen bg-red-100 text-red-800 p-4 text-center">
-    Error loading trusted brands data: {{ error.message }}
-  </div>
-  
-  <!-- Loading state -->
-  <div v-else-if="pending" class="w-screen bg-gray-100 p-4 text-center">
-    Loading trusted brands...
-  </div>
-  
-  <!-- Main content -->
-  <div v-else class="overflow-hidden mx-auto 2xl:container w-full bg-white py-4 my-2" v-bind="htmlAttributes">
+  <!-- Main content - no loading states since data is hardcoded -->
+  <div class="overflow-hidden mx-auto 2xl:container w-full bg-white py-4 my-2" v-bind="htmlAttributes">
     <!-- Heading -->
     <div
       class="heading text-center py-4 md:py-8 font-extrabold text-2xl md:text-4xl text-gray-300 flex-wrap flex justify-center items-center"
     >
-      <p class="max-w-2xl md:w-full mx-auto" >
+      <h2 class="max-w-2xl md:w-full mx-auto" >
         {{ t(title) }}
-      </p>
+      </h2>
     </div>
 
     <!-- Scrolling brand icons -->

@@ -1,42 +1,20 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import IconFacebook from './icon/facebook.vue'
-import IconInstagram from './icon/instagram.vue'
-import IconLinkedin from './icon/linkedin.vue'
-import IconYouTube from './icon/youtube.vue'
-import IconTikTok from './icon/tiktok.vue'
-import IconWhatsApp from './icon/whatsapp.vue'
-import IconTwitter from './icon/twitter.vue'
+import Icon from './Icon.vue'
 import Logo from '~/components/Logo.vue'
+import CurrencySelector from '~/components/CurrencySelector.vue'
 
 // Use the new language data composable
 const { footerData, t, pending, error } = useLanguageData()
 
 // State
 const currentYear = new Date().getFullYear()
-
-// Method to get icon name for custom SVG icons
-const getIconName = (iconName: string | undefined) => {
-  if (!iconName) return 'svg:default'
-  return `svg:${iconName}`
-}
-
-// Icon mapping
-const iconMap = {
-  facebook: IconFacebook,
-  instagram: IconInstagram,
-  linkedin: IconLinkedin,
-  youtube: IconYouTube,
-  tiktok: IconTikTok,
-  whatsapp: IconWhatsApp,
-  twitter: IconTwitter,
-};
 </script>
 
 <template>
   <!-- Error state -->
   <div v-if="error" class="w-screen bg-red-100 text-red-800 p-4 text-center">
-    Error loading footer data: {{ error.message }}
+    Error loading footer data: {{ error }}
   </div>
   
   <!-- Loading state -->
@@ -51,10 +29,10 @@ const iconMap = {
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 py-4">
         <!-- Left: Social Media Icons -->
         <div class="flex items-center gap-3">
-          <span class="text-sm text-gray-600 hidden md:block">{{ t(footerData?.social?.title || 'social.title') }}:</span>
+          <span class="text-sm text-gray-600 hidden md:block">{{ t((footerData as any)?.social?.title || 'social.title') }}:</span>
           <div class="flex items-center gap-3">
             <a
-              v-for="(social, index) in footerData?.social?.icons"
+              v-for="(social, index) in (footerData as any)?.social?.icons"
               :key="index"
               :href="social.link"
               target="_blank"
@@ -62,11 +40,12 @@ const iconMap = {
               class="social-icon-link group"
               :aria-label="social.name"
             >
-              <component
-                :is="iconMap[social.icon as keyof typeof iconMap]"
+              <Icon
                 v-if="social.icon"
-                class="w-5 h-5 text-gray-600 transition-all duration-300 group-hover:scale-110 transform"
-                :class="social.color"
+                :name="social.icon"
+                size="md"
+                color="text-gray-600 transition-all duration-300 group-hover:scale-110 transform"
+                :custom-class="social.color"
               />
               <div
                 v-else
@@ -81,10 +60,14 @@ const iconMap = {
 
         <!-- Center: Copyright -->
         <div class="text-center">
-          <p class="flex items-center justify-center gap-2 text-xs text-gray-500">
-            {{ t(footerData?.copyright?.text || 'copyright.text') }}<Logo className="w-8 h-8" logoSize="w-8 h-8" /> © {{ currentYear }}
-          </p>
+          <div class="flex items-center justify-center gap-2 text-xs text-gray-500">
+            <span>{{ t(footerData?.copyright?.text || 'copyright.text') }}</span><Logo className="w-8 h-8" logoSize="w-8 h-8" /> <span> © {{ currentYear }}</span>
+          </div>
         </div>
+
+        <!-- <div class="flex items-center gap-3">
+          <CurrencySelector />
+        </div> -->
 
       </div>
     </footer>

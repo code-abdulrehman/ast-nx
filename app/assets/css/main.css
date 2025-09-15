@@ -46,4 +46,39 @@
   --color-error-bg: #fee2e2;
   --color-info: #2563eb;
   --color-info-bg: #dbeafe;
+  --color-green-50:  #f0fdf9;
+  --color-green-100: #ccfbf1;
+  --color-green-200: #99f6e4;
+  --color-green-300: #5eead4;
+  --color-green-400: #2dd4bf;
+  --color-green-500: #057a55; /* your base color */
+  --color-green-600: #046c4e;
+  --color-green-700: #065f46;
+  --color-green-800: #064e3b;
+  --color-green-900: #022c22;
+}
+
+/* Ensure sticky positioning works properly */
+header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+  width: 100% !important;
+}
+
+/* Fix for sticky header in different browsers */
+@supports (position: sticky) {
+  header {
+    position: sticky;
+  }
+}
+
+/* Ensure proper backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+  header {
+    backdrop-filter: blur(10px);
+  }
+}
+.mirror {
+  transform: scaleX(-1);
 }

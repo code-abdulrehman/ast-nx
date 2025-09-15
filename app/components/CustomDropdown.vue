@@ -2,6 +2,7 @@
   <div class="relative inline-block text-left" ref="dropdownRef">
     <!-- Dropdown Button -->
     <button
+      aria-label="ast-data-dropdown"
       @click="toggleDropdown"
       type="button"
       class="inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:border-primary focus:ring-0 transition-colors duration-200"
@@ -36,6 +37,7 @@
       >
         <div role="menu" aria-orientation="vertical">
           <button
+          aria-label="ast-data-options"
             v-for="(option, index) in options"
             :key="index"
             @click="selectOption(option)"

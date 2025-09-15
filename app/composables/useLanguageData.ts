@@ -1,13 +1,22 @@
 import type { LanguageData } from '../../server/api/languages/types'
 
+// Import language data directly
+import enData from '../../server/api/languages/en.json'
+import arData from '../../server/api/languages/ar.json'
+import urData from '../../server/api/languages/ur.json'
+
+const languageDataMap: Record<string, LanguageData> = {
+  en: enData,
+  ar: arData,
+  ur: urData,
+}
+
 export const useLanguageData = () => {
   const { locale } = useI18n()
   
-  // Fetch language-specific data from API
-  const { data: languageData, pending, error, refresh } = useFetch<LanguageData>('/api/data', {
-    query: computed(() => ({ lang: locale.value || 'en' })),
-    key: computed(() => `language-data-${locale.value || 'en'}`),
-    default: () => ({} as LanguageData)
+  // Get language data directly from imported files - no API calls
+  const languageData = computed(() => {
+    return languageDataMap[locale.value || 'en'] || languageDataMap.en
   })
 
   // Simple translation function for flat data structure
@@ -56,13 +65,13 @@ export const useLanguageData = () => {
     trustedData,
     productsData,
     
-    // State
-    pending: readonly(pending),
-    error: readonly(error),
+    // State - always false since data is local
+    pending: ref(false),
+    error: ref(null),
     
     // Methods
     t,
     getSection,
-    refresh
+    refresh: () => {} // No-op since data is local
   }
 }

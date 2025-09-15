@@ -1,6 +1,9 @@
 <script setup>
 import { NuxtLink } from '#components'
 
+// Get current locale for URL preservation
+const { locale } = useI18n()
+
 // Props (same as React)
 defineProps({
   textSize: {
@@ -29,13 +32,25 @@ defineProps({
   },
 
 })
+
+// Generate localized home URL
+const homeUrl = computed(() => {
+  const baseUrl = '/'
+  // If locale is 'en' (default), don't add prefix
+  if (locale.value === 'en') {
+    return baseUrl
+  }
+  // For other locales, add the locale prefix
+  return `/${locale.value}${baseUrl}`
+})
 </script>
 
 <template>
   <NuxtLink
-    to="/"
+    :to="homeUrl"
     class="flex font-bold flex-col items-start gap-0"
     :class="[ `text-${textSize}`, className ]"
+    aria-label="ast-logo"
   >
 
     <!-- SVG Logo -->

@@ -4,6 +4,7 @@ import { useRoute, useRouter } from "vue-router";
 import ProductCard from "./ProductCard.vue";
 import Services from "./Services.vue";
 import { useQuickData } from '~/composables/useLanguageSnippets'
+import { usePriceCalculator } from '~/composables/usePriceCalculator'
 
 // Props: pass products from parent or store
 const props = defineProps({
@@ -31,6 +32,7 @@ const {
 const filteredProducts = ref([...(props.featureProducts || [])]);
 const allProducts = ref([...(props.products || [])]);
 const gamingProducts = ref([]);
+console.log(allProducts , "allProducts")
 
 // Offer timer → 2 days from now
 const offerEndTime = new Date();
@@ -175,6 +177,7 @@ const handleSeeAll = () => {
         class="text-center py-6"
       >
         <button
+          aria-label="ast-see-all-product"
           @click="handleSeeAll"
           class="bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300 flex items-center gap-2 mx-auto"
         >
