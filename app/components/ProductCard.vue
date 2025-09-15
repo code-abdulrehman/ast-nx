@@ -108,8 +108,8 @@ const handleImageError = (event) => {
             width: product_images[0]?.includes('/ast/products/posts/') ? '100%' : '180px',
             borderRadius: product_images[0]?.includes('/ast/products/posts/') ? '4px' : '0',
             position: 'relative',
-            scale: product_images[0]?.includes('/ast/products/posts/') ? '1.2' : '1',
-            top: product_images[0]?.includes('/ast/products/posts/') ? '-18px' : '0'
+            scale: product_images[0]?.includes('/ast/products/posts/') ? '1.1' : '1',
+            top: product_images[0]?.includes('/ast/products/posts/') ? '-1px' : '0'
           }"
           loading="lazy"
           @error="handleImageError"
