@@ -21,11 +21,7 @@
 import CarouselSection from '~/components/CarouselSection.vue'
 import Trusted from '~/components/Trusted.vue'
 import ProductListing from '~/components/ProductListing.vue'
-import { useQuickData } from '~/composables/useLanguageSnippets'
 import { useProducts } from '~/composables/useProducts'
-
-// Language data
-const { logoText, logoDescription, navStore } = useQuickData()
 
 // Products data - instant loading since data is hardcoded
 const { products, featured, gamingProducts } = useProducts()
@@ -34,9 +30,12 @@ const { products, featured, gamingProducts } = useProducts()
 useHead({
   title: 'AST Earbuds | Best Wireless Earbuds & Audio Accessories',
   meta: [
-    { name: 'description', content: 'AST Telecom Company offers the best mobile, broadband, and internet services. Discover affordable plans, latest smartphones, and top customer support. Switch to AST today!, Abdulrehman Sapra Telecom' },
-    { name: 'keywords', content: 'AST, Abdulrehman Sapra Telecom, telecom solutions, quality products, services, buds, earbuds, headphones, audio accessories, china, best wireless earbuds, best audio accessories' },
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    { name: 'description', content: 'AST offers the best wireless earbuds, fast chargers, and audio accessories. Discover high-quality sound, advanced features, and affordable prices. Shop AST for your next audio upgrade!' },
+    { name: 'keywords', content: 'AST, wireless earbuds, fast chargers, audio accessories, high-quality sound, advanced features, affordable prices, best wireless earbuds, best audio accessories' },
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'googlebot', content: 'index, follow' },
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
   ]
 })
 
