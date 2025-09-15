@@ -5,9 +5,16 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
+      title: 'AST - Premium Audio Products',
       meta: [
         { name: 'robots', content: 'index, follow' },
-        { name: 'googlebot', content: 'index, follow' }
+        { name: 'googlebot', content: 'index, follow' },
+        { name: 'description', content: 'AST - Premium wireless audio products with high-quality sound and advanced features' },
+        { name: 'keywords', content: 'wireless earbuds, audio, AST, premium sound, bluetooth' },
+        { property: 'og:title', content: 'AST - Premium Audio Products' },
+        { property: 'og:description', content: 'AST - Premium wireless audio products with high-quality sound and advanced features' },
+        { property: 'og:type', content: 'website' },
+        { name: 'twitter:card', content: 'summary_large_image' }
       ]
     }
   },
@@ -46,23 +53,11 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     'nuxt-icon',
     '@nuxtjs/robots',
-    'nuxt-simple-sitemap',
   ],
   robots: {
     allow: '/',
     disallow: ['/admin/', '/api/', '/_nuxt/'],
     sitemap: 'https://ast-nx.vercel.app/sitemap.xml'
-  },
-  sitemap: {
-    siteUrl: 'https://ast-nx.vercel.app', // tumhari live site ka URL
-    gzip: true,
-    routes: ['/'],
-    exclude: ['/admin/', '/api/', '/_nuxt/'],
-    i18n: true,
-    defaults: {
-      changefreq: 'daily',
-      priority: 0.7
-    }
   },
   icon: {
     customCollections: [{

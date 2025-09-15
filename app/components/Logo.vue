@@ -61,7 +61,7 @@ const homeUrl = computed(() => {
       viewBox="0 0 441 170"
       :class="logoSize || 'w-10 md:w-[52px] h-auto'"
       width="10"
-      height="10"
+      height="8"
       :fill="fill"
     >
       <g>
