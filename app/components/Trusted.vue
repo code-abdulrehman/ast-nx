@@ -44,18 +44,18 @@ const brands = [
 
 <template>
   <!-- Main content - no loading states since data is hardcoded -->
-  <div class="overflow-hidden mx-auto 2xl:container w-full bg-white py-4 my-2" v-bind="htmlAttributes">
+  <div class="overflow-hidden mx-auto 2xl:container w-full bg-white dark:bg-gray-900 py-4 my-2" v-bind="htmlAttributes">
     <!-- Heading -->
     <div
-      class="heading text-center py-4 md:py-8 font-extrabold text-2xl md:text-4xl text-gray-300 flex-wrap flex justify-center items-center"
+      class="heading text-center py-4 md:py-8 font-extrabold text-2xl md:text-4xl text-gray-800 dark:text-white flex-wrap flex justify-center items-center"
     >
-      <h2 class="max-w-2xl md:w-full mx-auto" aria-label="Trusted Brands">
+      <h2 class="max-w-2xl md:w-full mx-auto min-w-24 text-gray-700">
         {{ t(title) }}
       </h2>
     </div>
 
     <!-- Scrolling brand icons -->
-    <div class="relative w-full h-24 trust-list" aria-label="Trusted Brands List">
+    <div class="relative w-full h-24 trust-list min-w-40" aria-label="Trusted Brands List" role="list">
       <AutoScrolling
         :items="brands"
         :speed="0.7"
