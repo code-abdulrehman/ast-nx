@@ -25,7 +25,7 @@
         {
           "name": "Facebook",
           "icon": "facebook",
-          "link": "https://facebook.com",
+          "link": "https://www.facebook.com/astelecom6",
           "color": "hover:text-blue-600"
         },
         {
@@ -55,7 +55,7 @@
         {
           "name": "WhatsApp",
           "icon": "whatsapp",
-          "link": "https://wa.me/123456789",
+          "link": "https://wa.me/+923066223005",
           "color": "hover:text-green-500"
         }
       ]
