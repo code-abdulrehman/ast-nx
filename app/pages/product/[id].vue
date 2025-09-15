@@ -411,7 +411,7 @@ const getThumbnailImages = () => {
 const handleWhatsAppOrder = () => {
   if (!product.value || !priceBreakdown.value) return
   
-  const message = `Hi! I want to order: ${product.value.title} - ${formatPriceDisplay(priceBreakdown.value.discounted)} \n${window.location.href}`
+  const message = `Hi! I want to order: ${product.value.title} - PKR:${formatPriceDisplay(priceBreakdown.value.discounted)} \n${window.location.href}`
   const whatsappUrl = `https://wa.me/+923066223005?text=${encodeURIComponent(message)}`
   window.open(whatsappUrl, '_blank')
 }

@@ -12,7 +12,7 @@
     "product_images": [
       "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts/ast-g1.webp",
       "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts-2/ast-g1.webp",
-      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g1.webp"
+      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/pack/ast-g1.webp"
     ],
     "product_stock": 150,
     "reviews": 1247,
@@ -48,8 +48,8 @@
     "banner_image": "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/banners/main-banner.webp",
     "product_images": [
       "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts/ast-g2.webp",
-      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g2.webp",
-      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g2.webp"
+      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts-2/ast-g2.webp",
+      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/pack/ast-g2.webp"
     ],
     "product_stock": 75,
     "reviews": 92,
@@ -84,10 +84,11 @@
     "original_price": 3400,
     "discount_percentage": 35,
     "product_feature_img": "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g3.webp",
+    "banner_image": "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/banners/main-banner.webp",
     "product_images": [
       "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts/ast-g3.webp",
       "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts-2/ast-g3.webp",
-      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g3.webp"
+      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/pack/ast-g3.webp"
     ],
     "product_stock": 200,
     "reviews": 19,
@@ -120,10 +121,11 @@
     "original_price": 4000,
     "discount_percentage": 38,
     "product_feature_img": "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g4.webp",
+    "banner_image": "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/banners/main-banner.webp",
     "product_images": [
       "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts/ast-g4.webp",
-      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g4.webp",
-      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g4.webp"
+      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts-2/ast-g4.webp",
+      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/pack/ast-g4.webp"
     ],
     "product_stock": 80,
     "reviews": 19,
@@ -155,10 +157,11 @@
     "original_price": 3600,
     "discount_percentage": 36,
     "product_feature_img": "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g5.webp",
+    "banner_image": "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/banners/main-banner.webp",
     "product_images": [
        "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts/ast-g5.webp",
-      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g5.webp",
-      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g5.webp"
+      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts-2/ast-g5.webp",
+      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/pack/ast-g5.webp"
     ],
     "product_stock": 300,
     "reviews": 92,
@@ -191,10 +194,11 @@
     "original_price": 3500,
     "discount_percentage": 31,
     "product_feature_img": "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g6.webp",
+    "banner_image": "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/banners/main-banner.webp",
     "product_images": [
       "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts/ast-g6.webp",
       "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts-2/ast-g6.webp",
-      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g6.webp"
+      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/pack/ast-g6.webp"
     ],
     "product_stock": 250,
     "reviews": 89,
@@ -225,10 +229,11 @@
     "original_price": 3200,
     "discount_percentage": 34,
     "product_feature_img": "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g7.webp",
+    "banner_image": "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/banners/main-banner.webp",
     "product_images": [
       "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts/ast-g7.webp",
       "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts-2/ast-g7.webp",
-      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g7.webp"
+      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/pack/ast-g7.webp"
     ],
     "product_stock": 120,
     "reviews": 71,
@@ -263,7 +268,7 @@
     "product_images": [
       "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts/ast-g8.webp",
       "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts-2/ast-g8.webp",
-      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g8.webp"
+      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/pack/ast-g8.webp"
     ],
     "product_stock": 100,
     "reviews": 100,
@@ -297,10 +302,11 @@
     "original_price": 4200,
     "discount_percentage": 43,
     "product_feature_img": "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g9.webp",
+    "banner_image": "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/banners/main-banner.webp",
     "product_images": [
       "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts/ast-g9.webp",
       "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/posts-2/ast-g9.webp",
-      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/ast-g9.webp"
+      "https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-fe@main/public/ast/products/pack/ast-g9.webp"
     ],
     "product_stock": 80,
     "reviews": 12,
