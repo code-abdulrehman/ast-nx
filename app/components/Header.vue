@@ -211,7 +211,7 @@ watchEffect(() => {
       <!-- Icons -->
       <div class="order-3 flex justify-end items-center gap-2">
         <!-- Language Switcher -->
-        <LanguageSwitcher :is-scrolled="isScrolled" />
+        <!-- <LanguageSwitcher :is-scrolled="isScrolled" /> -->
 
         <!-- Mobile Search Toggle -->
         <button
