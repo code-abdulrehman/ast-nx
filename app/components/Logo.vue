@@ -60,6 +60,8 @@ const homeUrl = computed(() => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 441 170"
       :class="logoSize || 'w-10 md:w-[52px] h-auto'"
+      width="10"
+      height="10"
       :fill="fill"
     >
       <g>

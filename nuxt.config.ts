@@ -3,17 +3,18 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
+    pageTransition: { name: 'page', mode: 'out-in' },
+    head: {
+      meta: [
+        { name: 'robots', content: 'index, follow' },
+        { name: 'googlebot', content: 'index, follow' }
+      ]
+    }
   },
   devServer: {
     port: 3000,
     host: 'localhost',
     https: false,
-    timeout: 60000, // 60 seconds timeout
-    hmr: {
-      port: 24678,
-      host: 'localhost'
-    }
   },
   vite: {
     server: {
@@ -39,7 +40,30 @@ export default defineNuxtConfig({
       }
     }
   },
-  modules: ['@nuxt/ui', '@nuxt/image', '@nuxtjs/i18n', 'nuxt-icon'],
+  modules: [
+    '@nuxt/ui',
+    '@nuxt/image',
+    '@nuxtjs/i18n',
+    'nuxt-icon',
+    '@nuxtjs/robots',
+    'nuxt-simple-sitemap',
+  ],
+  robots: {
+    allow: '/',
+    disallow: ['/admin/', '/api/', '/_nuxt/'],
+    sitemap: 'https://ast-nx.vercel.app/sitemap.xml'
+  },
+  sitemap: {
+    siteUrl: 'https://ast-nx.vercel.app', // tumhari live site ka URL
+    gzip: true,
+    routes: ['/'],
+    exclude: ['/admin/', '/api/', '/_nuxt/'],
+    i18n: true,
+    defaults: {
+      changefreq: 'daily',
+      priority: 0.7
+    }
+  },
   icon: {
     customCollections: [{
       prefix: 'svg',
@@ -47,9 +71,7 @@ export default defineNuxtConfig({
     }],
     serverBundle: {
       collections: [],
-      mode: 'local'
     },
-    autoInstall: false
   },
   css: ['~/assets/css/main.css', '~/assets/css/font.css'],
   ui: {
@@ -97,5 +119,10 @@ export default defineNuxtConfig({
         name: 'Arabic'
       }]
   },
+  runtimeConfig: {
+    public: {
+      cdnBase: 'https://cdn.jsdelivr.net/gh/code-abdulrehman/ast-nx@main/public'
+    }
+  }
   
 })

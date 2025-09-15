@@ -49,13 +49,13 @@ const brands = [
     <div
       class="heading text-center py-4 md:py-8 font-extrabold text-2xl md:text-4xl text-gray-300 flex-wrap flex justify-center items-center"
     >
-      <h2 class="max-w-2xl md:w-full mx-auto" >
+      <h2 class="max-w-2xl md:w-full mx-auto" aria-label="Trusted Brands">
         {{ t(title) }}
       </h2>
     </div>
 
     <!-- Scrolling brand icons -->
-    <div class="relative w-full h-24 trust-list">
+    <div class="relative w-full h-24 trust-list" aria-label="Trusted Brands List">
       <AutoScrolling
         :items="brands"
         :speed="0.7"

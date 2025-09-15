@@ -137,7 +137,7 @@ const handleImageError = (event) => {
       <div class="mt-4 px-5 pb-5">
         <!-- Title -->
         <h2
-          class="title text-xl tracking-tight text-slate-900 truncate font-semibold"
+          class="title text-xl tracking-tight text-slate-900 truncate"
           :title="title"
         >
           {{ title }}

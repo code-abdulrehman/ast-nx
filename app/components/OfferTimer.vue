@@ -56,15 +56,15 @@ onBeforeUnmount(() => {
     <div class="timer-heading flex justify-evenly sm:justify-between items-center">
       <div class="div flex justify-between items-center gap-12">
         <!-- Heading -->
-        <div class="heading font-medium text-primary hidden md:block relative">
+        <div class="heading font-medium text-primary hidden md:block relative" aria-label="On Sale">
           {{ t(productsData?.onSale || 'products.onSale') }}
         </div>
 
         <!-- Timer -->
-        <div class="timer-ends flex justify-evenly items-center gap-4 text-white">
+        <div class="timer-ends flex justify-evenly items-center gap-4 text-white" aria-label="Ending In">
           <span class="text-black hidden sm:flex">{{ t(productsData?.endingIn || 'products.endingIn') }}</span>
           <span>
-            <div class="timer flex items-center gap-2" dir="ltr">
+            <div class="timer flex items-center gap-2" dir="ltr" aria-label="Timer">
               <div
                 class="w-10 p-2 bg-primary rounded-md flex justify-center items-center shadow-md"
               >
@@ -95,7 +95,7 @@ onBeforeUnmount(() => {
     </div>
 
     <!-- Expired Message -->
-    <div class="text-center">
+    <div class="text-center" aria-label="Expired Message">
       <span
         v-if="isExpired()"
         class="text-red-600 font-semibold block mt-2"

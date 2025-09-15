@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ast-nx.vercel.app/sitemap.xml
+
+# Block admin areas and internal paths
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_nuxt/

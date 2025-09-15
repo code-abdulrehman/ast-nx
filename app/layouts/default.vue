@@ -5,7 +5,7 @@
     <Header />
 
     <!-- Main Content Area -->
-    <main class="flex-1 overflow-x-hidden">
+    <main class="flex-1">
       <slot />
     </main>
 
