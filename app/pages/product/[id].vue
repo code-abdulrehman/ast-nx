@@ -458,6 +458,7 @@ useHead({
     { name: 'robots', content: 'index, follow' },
     { name: 'googlebot', content: 'index, follow' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { name: 'google-site-verification', content: '-acDsVMw1Y5BiRHfUBhgsHXUOmVeeMwhz6gzbg1uhaM' },
   ]
 })
 </script>
